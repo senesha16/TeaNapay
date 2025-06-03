@@ -14,7 +14,10 @@
     <header class="main-header">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid position-relative">
-                <button class="navbar-toggler d-lg-none position-absolute top-50 start-0 translate-middle-y ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- Offcanvas Toggler -->
+                <button class="navbar-toggler d-lg-none position-absolute top-50 start-0 translate-middle-y ms-2"
+                    type="button" data-bs-toggle="offcanvas" data-bs-target="#mainNavDrawer"
+                    aria-controls="mainNavDrawer" aria-label="Toggle navigation">
                     <i class="bi bi-list fs-2"></i>
                 </button>
                 <a class="navbar-brand d-none d-lg-block" href="#home">TEA-Napay</a>
@@ -24,22 +27,49 @@
                     <a class="nav-link px-2" href="cart.html" aria-label="View cart"><i class="bi bi-cart4 fs-4"></i></a>
                     <a class="nav-link px-2" href="index.html" aria-label="Log in"><i class="bi bi-person-circle fs-4"></i></a>
                 </div>
-                <div class="collapse navbar-collapse" id="mainNav">
+                <!-- Desktop Navbar -->
+                <div class="collapse navbar-collapse d-none d-lg-block" id="mainNav">
                     <div class="navbar-nav-container d-flex justify-content-center w-100">
                         <ul class="navbar-nav">
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#home">HOME</a></li>
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#about">ABOUT</a></li>
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#service">SERVICE</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#home">HOME</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#about">ABOUT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#service">SERVICE</a></li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="homepage.html#menu" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">MENU</a>
+                                <a class="nav-link dropdown-toggle" href="#menu" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">MENU</a>
                                 <ul class="dropdown-menu" aria-labelledby="menuDropdown">
                                     <li><a class="dropdown-item" href="#">Donuts</a></li>
                                     <li><a class="dropdown-item" href="#">Bread</a></li>
                                     <li><a class="dropdown-item" href="#">Milk Tea</a></li>
                                     <li><a class="dropdown-item" href="#">Cakes</a></li>
+                                    <li><a class="dropdown-item" href="#">Others</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="#contact">CONTACT</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Offcanvas Drawer for Mobile/Tablet -->
+                <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mainNavDrawer" aria-labelledby="mainNavDrawerLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="mainNavDrawerLabel">TEA-Napay</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-item"><a class="nav-link" href="#home" data-bs-dismiss="offcanvas">HOME</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#about" data-bs-dismiss="offcanvas">ABOUT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#service" data-bs-dismiss="offcanvas">SERVICE</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#menu" id="menuDropdownDrawer" role="button" data-bs-toggle="dropdown" aria-expanded="false">MENU</a>
+                                <ul class="dropdown-menu" aria-labelledby="menuDropdownDrawer">
+                                    <li><a class="dropdown-item" href="#">Donuts</a></li>
+                                    <li><a class="dropdown-item" href="#">Bread</a></li>
+                                    <li><a class="dropdown-item" href="#">Milk Tea</a></li>
+                                    <li><a class="dropdown-item" href="#">Cakes</a></li>
+                                    <li><a class="dropdown-item" href="#">Others</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="#contact" data-bs-dismiss="offcanvas">CONTACT</a></li>
                         </ul>
                     </div>
                 </div>
@@ -146,12 +176,12 @@
     <footer class="footer animate__animated animate__fadeIn" id="contact">
         <div class="container">
             <div class="row g-4">
-                <div class="col-12 col-md-2 text-center text-md-start">
-                    <ul class="nav justify-content-center justify-content-md-start flex-row flex-md-column">
-                        <li class="nav-item mx-2"><a class="nav-link" href="homepage.html#home">HOME</a></li>
-                        <li class="nav-item mx-2"><a class="nav-link" href="homepage.html#about">ABOUT</a></li>
-                        <li class="nav-item mx-2"><a class="nav-link" href="homepage.html#service">SERVICE</a></li>
-                        <li class="nav-item mx-2"><a class="nav-link" href="homepage.html#menu">MENU</a></li>
+                <div class="col-12 col-md-1 text-md-start">
+                    <ul class="nav justify-content-center flex-row flex-md-column">
+                        <li class="nav-item mx-2"><a class="nav-link" href="#home">HOME</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="#about">ABOUT</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="#service">SERVICE</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="#menu">MENU</a></li>
                     </ul>
                 </div>
                 <div class="col-12 col-md-5 text-center">
@@ -162,9 +192,10 @@
                     </p>
                     <div class="social-icons">
                         <a href="https://www.facebook.com/profile.php?id=100067176574296" class="social-icon" aria-label="Visit our Facebook page"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.facebook.com/messages/t/102498215320537" class="social-icon" aria-label="Visit our Facebook page"><i class="bi bi-messenger"></i></a>
                     </div>
                 </div>
-                <div class="col-12 col-md-5 text-center text-md-start">
+                <div class="col-12 col-md-6 text-center text-md-start">
                     <h5 class="footer-heading">SEND US A MESSAGE</h5>
                     <div class="contact-form">
                         <div class="mb-3">
@@ -176,7 +207,7 @@
                         <div class="mb-3">
                             <textarea class="form-control" placeholder="Message *" rows="3" required aria-label="Your message"></textarea>
                         </div>
-                        <button type="button" class="btn btn-custom rounded-pill px-4">Submit</button>
+                        <button type="button" class="btn btn-custom rounded-pill px-4">SUBMIT</button>
                     </div>
                 </div>
             </div>

@@ -48,7 +48,7 @@ main {
 }
 
 .main-header .navbar-brand {
-    font-family: 'DM Serif Text', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 2rem;
     color: var(--primary-color) !important;
     font-weight: 700;
@@ -132,18 +132,31 @@ main {
     flex-direction: row;
 }
 
+.main-header .bi-list{
+    color: var(--primary-color);
+}
+
 @keyframes slideDown {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Increase spacing between navbar links */
+/* Remove custom spacing between navbar links */
 .navbar-nav .nav-item {
-    margin-right: 1.5rem;
+    margin-right: 1rem;
 }
 
 .navbar-nav .nav-item:last-child {
     margin-right: 0;
+}
+
+/* Remove custom font size for navbar links */
+.main-header .nav-link {
+    font-size: 1.2rem;
+}
+
+.main-header .dropdown-item {
+    font-size: 0.95rem;
 }
 
 /* Home Section */
@@ -155,6 +168,13 @@ main {
     padding: 5rem 0;
     position: relative;
     overflow: hidden;
+    animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .home::before {
@@ -164,21 +184,44 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.15);
     z-index: 1;
 }
 
+/* Always show and spin the donut background */
 .home::after {
     content: "";
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 50%;
+    top: 50%;
     width: 60vw;
-    height: 100%;
-    background: url('img/homedonut.png') left center/contain no-repeat;
+    max-width: 400px;
+    height: 60vw;
+    max-height: 400px;
+    background: url('img/homedonut.png') center center/contain no-repeat;
     opacity: 0.18;
     z-index: 1;
     pointer-events: none;
+    transform: translate(-50%, -50%);
+    animation: spin-bg 12s linear infinite;
+}
+
+@media (max-width: 991.98px) {
+    .home::after {
+        width: 70vw;
+        height: 70vw;
+        max-width: 320px;
+        max-height: 320px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .home::after {
+        width: 80vw;
+        height: 80vw;
+        max-width: 220px;
+        max-height: 220px;
+    }
 }
 
 .home .container {
@@ -187,25 +230,18 @@ main {
 }
 
 .home h1 {
-    font-family: 'DM Serif Text', serif;
-    font-size: 3.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
     font-weight: 700;
     color: var(--white);
-    line-height: 1.2;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.home h2 {
-    font-size: 1.5rem;
-    color: var(--white);
-    font-weight: 300;
-    letter-spacing: 1px;
+    line-height: 1.3;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .home .lead {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: var(--white);
-    margin: 2rem 0;
+    margin: 1.5rem 0;
     font-weight: 400;
 }
 
@@ -221,13 +257,13 @@ main {
 
 .home .btn-custom:hover {
     background: var(--hover-color);
-    transform: translateY(-3px);
+    transform: translateY(-3px) scale(1.05);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
 .home .home-image {
-    height: 700px;
-    animation: spin 10s linear infinite;
+    max-height: 600px;
+    animation: spin 12s linear infinite;
 }
 
 @keyframes spin {
@@ -241,7 +277,13 @@ main {
 
 @media (max-width: 767.98px) {
     .home .home-image {
-        height: 300px;
+        max-height: 250px;
+    }
+    .home h1 {
+        font-size: 2rem;
+    }
+    .home .lead {
+        font-size: 1rem;
     }
 }
 
@@ -257,7 +299,7 @@ main {
         width: 60vw;
         height: 100%;
         background: url('img/homedonut.png') left center/contain no-repeat;
-        opacity: 0.18;
+        opacity: 0.2;
         z-index: 1;
         pointer-events: none;
         animation: spin-bg 12s linear infinite;
@@ -289,7 +331,7 @@ main {
 }
 
 .about-card h2 {
-    font-family: 'DM Serif Text', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     color: var(--accent-color);
     margin-bottom: 2rem;
@@ -326,7 +368,7 @@ main {
 }
 
 .service h2 {
-    font-family: 'DM Serif Text', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     color: var(--hover-color);
     margin-bottom: 3.5rem;
@@ -376,7 +418,7 @@ main {
 }
 
 .menu h2 {
-    font-family: 'DM Serif Text', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     color: var(--accent-color);
     margin-bottom: 3.5rem;
@@ -454,11 +496,12 @@ main {
 }
 
 .footer-heading {
-    font-family: 'DM Serif Text', serif;
-    font-size: 1.8rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
     color: var(--primary-color);
     margin-bottom: 2rem;
     text-align: center;
+    font-weight: 600;
 }
 
 .footer-text {
@@ -470,6 +513,7 @@ main {
 .footer .nav-link {
     color: var(--white) !important;
     font-size: 1rem;
+    font-weight: 500;
     padding: 0.6rem 0;
     transition: all 0.3s ease;
     text-align: center;
@@ -533,14 +577,6 @@ main {
     margin-right: auto;
 }
 
-.contact-form h5 {
-    font-family: 'DM Serif Text', serif;
-    font-size: 1.8rem;
-    color: var(--accent-color);
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
 .contact-form .btn-custom:hover {
     background: var(--white);
     color: var(--primary-color);
@@ -562,7 +598,7 @@ main {
 }
 
 .cart h2 {
-    font-family: 'DM Serif Text', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     color: var(--accent-color);
     margin-bottom: 3rem;
@@ -651,7 +687,7 @@ main {
 }
 
 .checkout h2 {
-    font-family: 'DM Serif Text', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     color: var(--accent-color);
     margin-bottom: 3rem;
@@ -667,7 +703,7 @@ main {
 }
 
 .checkout-card h4 {
-    font-family: 'DM Serif Text', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
     color: var(--primary-color);
     margin-bottom: 1.5rem;
@@ -818,23 +854,18 @@ main {
 
 .login-card p, .register-card p {
     font-size: 1rem;
-    color: white;
-    font-weight: 500;
-}
-
-.login-card p, .register-card p {
-    font-size: 1rem;
     color: var(--text-color);
     font-weight: 500;
 }
 
-.login .form-label, .register .form-label{
+.login .form-label, .register .form-label {
     font-weight: 500;
     color: var(--accent-color);
 }
 
-.login .form-control, .register .form-control{
+.login .form-control, .register .form-control {
     border: 2px solid var(--primary-color);
+
     border-radius: 10px;
     padding: 0.75rem;
     color: var(--text-color);
@@ -848,7 +879,7 @@ main {
     background: var(--white);
 }
 
-.login .form-control::placeholder, .register .form-control::placeholder{
+.login .form-control::placeholder, .register .form-control::placeholder {
     color: var(--text-color);
     opacity: 0.7;
 }
@@ -914,14 +945,34 @@ main {
     transform: scale(1.1);
 }
 
+/* Contact button style for home section */
+.btn-contact {
+    background: var(--accent-color);
+    color: var(--white);
+    font-weight: 700;
+    border: none;
+    border-radius: 50px;
+    padding: 1rem 2.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+    letter-spacing: 1px;
+}
+
+.btn-contact:hover,
+.btn-contact:focus {
+    background: var(--secondary-color);
+    color: var(--accent-color);
+    transform: translateY(-3px) scale(1.05);
+}
+
 /* Welcome badge styling */
-.welcome-badge {
-    font-size: 2.2rem;
+/* Welcome badge styling */
+.home welcome-badge {
+    font-size: 2rem;
     font-weight: 800;
     letter-spacing: 2px;
     background: var(--secondary-color);
     color: var(--primary-color);
-    padding: 0.35em 1.2em;
     border-radius: 30px;
     box-shadow: 0 2px 8px rgba(255, 111, 145, 0.08);
     text-transform: uppercase;
@@ -930,11 +981,11 @@ main {
 
 /* Hero headline styling */
 .home-headline {
-    font-family: 'DM Serif Text', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 2.7rem;
     font-weight: 700;
     line-height: 1.15;
-    color: var(--accent-color);
+    color: var(--secondary-color);
 }
 
 @media (min-width: 768px) {
@@ -943,7 +994,7 @@ main {
     }
 }
 
-.home h2{
+.home h2 {
     color: var(--accent-color);
     font-weight: 600;
     font-size: 2rem;
@@ -951,14 +1002,8 @@ main {
 
 /* Highlighted words */
 .home-headline .highlight {
-    /* Remove color and background styles */
-    color: inherit;
-    font-weight: inherit;
-    letter-spacing: inherit;
-    background: none;
-    background-clip: unset;
-    -webkit-background-clip: unset;
-    -webkit-text-fill-color: unset;
+    color: var(--white);
+    font-weight: 800;
 }
 
 /* Heart accent */
@@ -966,10 +1011,6 @@ main {
     color: inherit;
     font-weight: inherit;
     letter-spacing: inherit;
-}
-
-.home-headline .home-heart i {
-    color: inherit;
 }
 
 /* Responsive Adjustments */
@@ -1034,20 +1075,4 @@ main {
 @keyframes spin-bg {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}
-
-@media (max-width: 991.98px) {
-    .home::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 60vw;
-        height: 100%;
-        background: url('img/homedonut.png') left center/contain no-repeat;
-        opacity: 0.18;
-        z-index: 1;
-        pointer-events: none;
-        animation: spin-bg 12s linear infinite;
-    }
 }
