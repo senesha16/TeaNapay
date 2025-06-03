@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - TEA-Napay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="register-page">
+    <!-- Header (same as other pages) -->
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid position-relative">
+                <button class="navbar-toggler d-lg-none position-absolute top-50 start-0 translate-middle-y ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="bi bi-list fs-2"></i>
+                </button>
+                <a class="navbar-brand d-none d-lg-block" href="homepage.html#home">TEA-Napay</a>
+                <a class="navbar-brand d-none d-md-block d-lg-none mx-auto" href="homepage.html#home">TEA-Napay</a>
+                <a class="navbar-brand d-block d-md-none ms-5" href="homepage.html#home">TEA-Napay</a>
+                <div class="navbar-nav icons-nav flex-row align-items-center position-absolute top-50 end-0 translate-middle-y me-2">
+                    <a class="nav-link px-2" href="cart.html" aria-label="View cart"><i class="bi bi-cart4 fs-4"></i></a>
+                    <a class="nav-link px-2" href="index.html" aria-label="Log in"><i class="bi bi-person-circle fs-4"></i></a>
+                </div>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <div class="navbar-nav-container d-flex justify-content-center w-100">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link" href="homepage.html#home">HOME</a></li>
+                            <li class="nav-item"><a class="nav-link" href="homepage.html#about">ABOUT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="homepage.html#service">SERVICE</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="homepage.html#menu" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">MENU</a>
+                                <ul class="dropdown-menu" aria-labelledby="menuDropdown">
+                                    <li><a class="dropdown-item" href="#">Donuts</a></li>
+                                    <li><a class="dropdown-item" href="#">Bread</a></li>
+                                    <li><a class="dropdown-item" href="#">Milk Tea</a></li>
+                                    <li><a class="dropdown-item" href="#">Cakes</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="homepage.html#contact">CONTACT</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Register Section -->
+    <section class="register py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <div class="register-card bg-white rounded shadow">
+                        <div class="row g-0">
+                            <div class="col-12 col-md-6 gradient-bg d-flex align-items-center justify-content-center">
+                                <div class="text-center p-4">
+                                    <i class="bi bi-cake2 fs-1 text-white mb-3"></i>
+                                    <h2 class="text-white">Join Us!</h2>
+                                    <p class="opacity-75">Create your account and start ordering!</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 p-4">
+                                <h3 class="mb-3">Register</h3>
+                                <p class="text-muted mb-4">Please fill in the details below.</p>
+                                <form id="register-form">
+                                    <div class="mb-3">
+                                        <label for="regName" class="form-label">Full Name *</label>
+                                        <input type="text" class="form-control" id="regName" placeholder="Your Name" required aria-label="Your name">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="regEmail" class="form-label">Email *</label>
+                                        <input type="email" class="form-control" id="regEmail" placeholder="username@gmail.com" required aria-label="Your email">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="regPassword" class="form-label">Password *</label>
+                                        <input type="password" class="form-control" id="regPassword" placeholder="••••••••" required aria-label="Your password">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="regConfirm" class="form-label">Confirm Password *</label>
+                                        <input type="password" class="form-control" id="regConfirm" placeholder="••••••••" required aria-label="Confirm password">
+                                    </div>
+                                    <button type="submit" class="btn btn-custom w-100">Register</button>
+                                    <p class="p1 text-center mt-3 small">Already have an account? <a href="index.html">Login</a></p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as other pages) -->
+    <footer class="footer animate__animated animate__fadeIn" id="contact">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-12 col-md-2 text-center text-md-start">
+                    <ul class="nav justify-content-center justify-content-md-start flex-row flex-md-column">
+                        <li class="nav-item mx-2"><a class="nav-link" href="homepage.html#home">HOME</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="homepage.html#about">ABOUT</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="homepage.html#service">SERVICE</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="homepage.html#menu">MENU</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-5 text-center">
+                    <h5 class="footer-heading">CONTACT DETAILS</h5>
+                    <p class="footer-text">
+                        Customer Hotline: +639687153421<br>
+                        racapacia@yahoo.com
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=100067176574296" class="social-icon" aria-label="Visit our Facebook page"><i class="bi bi-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-5 text-center text-md-start">
+                    <h5 class="footer-heading">SEND US A MESSAGE</h5>
+                    <div class="contact-form">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Name *" required aria-label="Your name">
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Email *" required aria-label="Your email">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" placeholder="Message *" rows="3" required aria-label="Your message"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-custom rounded-pill px-4">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const registerForm = document.getElementById('register-form');
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('regName').value.trim();
+                const email = document.getElementById('regEmail').value.trim();
+                const password = document.getElementById('regPassword').value;
+                const confirm = document.getElementById('regConfirm').value;
+                if (password !== confirm) {
+                    alert('Passwords do not match!');
+                    return;
+                }
+                // Save registration info (for demo only)
+                localStorage.setItem('registeredUser', JSON.stringify({ name, email, password }));
+                alert('Registration successful! Please login.');
+                window.location.href = 'login.html';
+            });
+        });
+    </script>
+</body>
+</html>

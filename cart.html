@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - TEA-Napay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header (same as homepage) -->
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid position-relative">
+                <button class="navbar-toggler d-lg-none position-absolute top-50 start-0 translate-middle-y ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="bi bi-list fs-2"></i>
+                </button>
+                <a class="navbar-brand d-none d-lg-block" href="#home">TEA-Napay</a>
+                <a class="navbar-brand d-none d-md-block d-lg-none mx-auto" href="#home">TEA-Napay</a>
+                <a class="navbar-brand d-block d-md-none ms-5" href="#home">TEA-Napay</a>
+                <div class="navbar-nav icons-nav flex-row align-items-center position-absolute top-50 end-0 translate-middle-y me-2">
+                    <a class="nav-link px-2" href="cart.html" aria-label="View cart"><i class="bi bi-cart4 fs-4"></i></a>
+                    <a class="nav-link px-2" href="index.html" aria-label="Log in"><i class="bi bi-person-circle fs-4"></i></a>
+                </div>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <div class="navbar-nav-container d-flex justify-content-center w-100">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link" href="#home">HOME</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#about">ABOUT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#service">SERVICE</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#menu" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">MENU</a>
+                                <ul class="dropdown-menu" aria-labelledby="menuDropdown">
+                                    <li><a class="dropdown-item" href="#">Donuts</a></li>
+                                    <li><a class="dropdown-item" href="#">Bread</a></li>
+                                    <li><a class="dropdown-item" href="#">Milk Tea</a></li>
+                                    <li><a class="dropdown-item" href="#">Cakes</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="#contact">CONTACT</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Cart Section -->
+    <section class="cart py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Your Cart</h2>
+            <div class="row">
+                <div class="col-12">
+                    <div class="cart-card bg-white p-4 rounded shadow">
+                        <table class="table table-responsive">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="select-all" checked></th>
+                                    <th>Item</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-label="Select"><input type="checkbox" class="item-checkbox" checked data-price="2.50" data-quantity="1" data-name="Strawberry Sprinkle Donut" data-image="https://via.placeholder.com/80x80/d14d72/ffffff?text=Donut"></td>
+                                    <td data-label="Item">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://via.placeholder.com/80x80/d14d72/ffffff?text=Donut" alt="Strawberry Donut" class="img-fluid rounded-circle me-3" style="width: 60px; height: 60px;">
+                                            <span>Strawberry Sprinkle Donut</span>
+                                        </div>
+                                    </td>
+                                    <td data-label="Price">$2.50</td>
+                                    <td data-label="Quantity">
+                                        <input type="number" class="form-control w-50 item-quantity" value="1" min="1">
+                                    </td>
+                                    <td data-label="Total" class="item-total">$2.50</td>
+                                    <td data-label="Remove"><button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Select"><input type="checkbox" class="item-checkbox" checked data-price="4.00" data-quantity="2" data-name="Strawberry Matcha Milk Tea" data-image="https://via.placeholder.com/80x80/d14d72/ffffff?text=Milk+Tea"></td>
+                                    <td data-label="Item">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://via.placeholder.com/80x80/d14d72/ffffff?text=Milk+Tea" alt="Milk Tea" class="img-fluid rounded-circle me-3" style="width: 60px; height: 60px;">
+                                            <span>Strawberry Matcha Milk Tea</span>
+                                        </div>
+                                    </td>
+                                    <td data-label="Price">$4.00</td>
+                                    <td data-label="Quantity">
+                                        <input type="number" class="form-control w-50 item-quantity" value="2" min="1">
+                                    </td>
+                                    <td data-label="Total" class="item-total">$8.00</td>
+                                    <td data-label="Remove"><button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <h4>Total: <span id="cart-total">$10.50</span></h4>
+                            <a href="checkout.html" class="btn btn-custom rounded-pill px-4" id="proceed-to-checkout">Proceed to Checkout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="homepage.html#menu" class="btn btn-outline-custom rounded-pill px-4">Continue Shopping</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as homepage) -->
+    <footer class="footer animate__animated animate__fadeIn" id="contact">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-12 col-md-2 text-center text-md-start">
+                    <ul class="nav justify-content-center justify-content-md-start flex-row flex-md-column">
+                        <li class="nav-item mx-2"><a class="nav-link" href="#home">HOME</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="#about">ABOUT</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="#service">SERVICE</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="#menu">MENU</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-5 text-center">
+                    <h5 class="footer-heading">CONTACT DETAILS</h5>
+                    <p class="footer-text">
+                        Customer Hotline: +639687153421<br>
+                        racapacia@yahoo.com
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=100067176574296" class="social-icon" aria-label="Visit our Facebook page"><i class="bi bi-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-5 text-center text-md-start">
+                    <h5 class="footer-heading">SEND US A MESSAGE</h5>
+                    <div class="contact-form">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Name *" required aria-label="Your name">
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Email *" required aria-label="Your email">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" placeholder="Message *" rows="3" required aria-label="Your message"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-custom rounded-pill px-4">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // JavaScript to handle checkbox and quantity updates
+        function updateCartTotal() {
+            let total = 0;
+            document.querySelectorAll('.item-checkbox:checked').forEach(checkbox => {
+                const price = parseFloat(checkbox.getAttribute('data-price'));
+                const quantity = parseInt(checkbox.closest('tr').querySelector('.item-quantity').value);
+                const itemTotal = price * quantity;
+                checkbox.closest('tr').querySelector('.item-total').textContent = `$${itemTotal.toFixed(2)}`;
+                total += itemTotal;
+            });
+            document.getElementById('cart-total').textContent = `$${total.toFixed(2)}`;
+        }
+
+        // Select All checkbox functionality
+        document.getElementById('select-all').addEventListener('change', function() {
+            document.querySelectorAll('.item-checkbox').forEach(checkbox => {
+                checkbox.checked = this.checked;
+            });
+            updateCartTotal();
+        });
+
+        // Individual checkbox functionality
+        document.querySelectorAll('.item-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                document.getElementById('select-all').checked = 
+                    document.querySelectorAll('.item-checkbox').length === 
+                    document.querySelectorAll('.item-checkbox:checked').length;
+                updateCartTotal();
+            });
+        });
+
+        // Quantity input functionality
+        document.querySelectorAll('.item-quantity').forEach(input => {
+            input.addEventListener('input', function() {
+                const checkbox = this.closest('tr').querySelector('.item-checkbox');
+                checkbox.setAttribute('data-quantity', this.value);
+                if (checkbox.checked) {
+                    updateCartTotal();
+                }
+            });
+        });
+
+        // Store selected items in localStorage on checkout
+        document.getElementById('proceed-to-checkout').addEventListener('click', function(e) {
+            const selectedItems = [];
+            document.querySelectorAll('.item-checkbox:checked').forEach(checkbox => {
+                const row = checkbox.closest('tr');
+                const item = {
+                    name: checkbox.getAttribute('data-name'),
+                    price: parseFloat(checkbox.getAttribute('data-price')),
+                    quantity: parseInt(row.querySelector('.item-quantity').value),
+                    image: checkbox.getAttribute('data-image'),
+                    total: parseFloat(row.querySelector('.item-total').textContent.replace('$', ''))
+                };
+                selectedItems.push(item);
+            });
+            localStorage.setItem('selectedCartItems', JSON.stringify(selectedItems));
+        });
+
+        // Initial calculation
+        updateCartTotal();
+    </script>
