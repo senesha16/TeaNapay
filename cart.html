@@ -87,8 +87,8 @@
                 <table class="table table-cart">
                     <thead>
                         <tr>
-                            <th class="text-left"><input type="checkbox" id="select-all" checked></th>
-                            <th>Product</th>
+                            <th class="text-center"><input type="checkbox" id="select-all" checked></th>
+                            <th class="text-center">Product</th>
                             <th class="text-center">Unit Price</th>
                             <th class="text-center">Quantity</th>
                             <th class="text-center">Total Price</th>
@@ -110,12 +110,16 @@
                             <td class="text-center">
                                 <div class="input-group input-group-sm w-75 mx-auto">
                                     <button class="btn btn-outline-secondary btn-sm" type="button" onclick="updateQuantity(this, -1)">-</button>
-                                    <input type="number" class="form-control text-center item-quantity" value="1" min="1">
+                                    <input type="number" class="form-control form-control-sm text-center item-quantity" value="1" min="1">
                                     <button class="btn btn-outline-secondary btn-sm" type="button" onclick="updateQuantity(this, 1)">+</button>
                                 </div>
                             </td>
                             <td class="text-center item-total">$2.50</td>
-                            <td class="text-center"><button class="btn btn-outline-danger btn-sm" onclick="removeItem(this)">Delete</button></td>
+                            <td class="text-center">
+                                <button class="btn btn-outline-danger btn-sm" onclick="removeItem(this)">
+                                    <i class="bi bi-trash-fill"></i>
+                                </button>
+                            </td>
                         </tr>
                         <tr>
                             <td><input type="checkbox" class="item-checkbox" checked data-price="4.00" data-quantity="2" data-name="Strawberry Matcha Milk Tea" data-image="https://via.placeholder.com/80x80/d14d72/ffffff?text=Milk+Tea"></td>
@@ -131,12 +135,16 @@
                             <td class="text-center">
                                 <div class="input-group input-group-sm w-75 mx-auto">
                                     <button class="btn btn-outline-secondary btn-sm" type="button" onclick="updateQuantity(this, -1)">-</button>
-                                    <input type="number" class="form-control text-center item-quantity" value="2" min="1">
+                                    <input type="number" class="form-control form-control-sm text-center item-quantity" value="2" min="1">
                                     <button class="btn btn-outline-secondary btn-sm" type="button" onclick="updateQuantity(this, 1)">+</button>
                                 </div>
                             </td>
                             <td class="text-center item-total">$8.00</td>
-                            <td class="text-center"><button class="btn btn-outline-danger btn-sm" onclick="removeItem(this)">Delete</button></td>
+                            <td class="text-center">
+                                <button class="btn btn-outline-danger btn-sm" onclick="removeItem(this)">
+                                    <i class="bi bi-trash-fill"></i>
+                                </button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -164,7 +172,7 @@
                         <div class="d-flex align-items-center">
                             <div class="input-group input-group-sm w-50 me-3">
                                 <button class="btn btn-outline-secondary btn-sm" type="button" onclick="updateQuantity(this, -1)">-</button>
-                                <input type="number" class="form-control text-center item-quantity" value="1" min="1">
+                                <input type="number" class="form-control form-control-sm text-center item-quantity" value="1" min="1">
                                 <button class="btn btn-outline-secondary btn-sm" type="button" onclick="updateQuantity(this, 1)">+</button>
                             </div>
                             <p class="mb-0">Total: <span class="item-total">$2.50</span></p>
@@ -183,7 +191,7 @@
                         <div class="d-flex align-items-center">
                             <div class="input-group input-group-sm w-50 me-3">
                                 <button class="btn btn-outline-secondary btn-sm" type="button" onclick="updateQuantity(this, -1)">-</button>
-                                <input type="number" class="form-control text-center item-quantity" value="2" min="1">
+                                <input type="number" class="form-control form-control-sm text-center item-quantity" value="2" min="1">
                                 <button class="btn btn-outline-secondary btn-sm" type="button" onclick="updateQuantity(this, 1)">+</button>
                             </div>
                             <p class="mb-0">Total: <span class="item-total">$8.00</span></p>

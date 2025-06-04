@@ -48,108 +48,86 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // CART PAGE SCRIPT
-function updateCartTotal() {
-    let total = 0;
-    document.querySelectorAll('.item-checkbox:checked').forEach(checkbox => {
-        const price = parseFloat(checkbox.getAttribute('data-price'));
-        const quantity = parseInt(checkbox.closest('.cart-item, tr').querySelector('.item-quantity').value);
-        const itemTotal = price * quantity;
-        checkbox.closest('.cart-item, tr').querySelector('.item-total').textContent = `$${itemTotal.toFixed(2)}`;
-        total += itemTotal;
-    });
-    document.getElementById('cart-total').textContent = `$${total.toFixed(2)}`;
-    document.getElementById('cart-total-mobile').textContent = `$${total.toFixed(2)}`;
-}
-
+// script.js
 function updateQuantity(button, change) {
     const input = button.parentElement.querySelector('.item-quantity');
     let quantity = parseInt(input.value) + change;
     if (quantity < 1) quantity = 1;
     input.value = quantity;
-    const checkbox = button.closest('.cart-item, tr').querySelector('.item-checkbox');
-    checkbox.setAttribute('data-quantity', quantity);
-    if (checkbox.checked) {
-        updateCartTotal();
-    }
+    const row = button.closest('tr') || button.closest('.cart-item');
+    const checkbox = row.querySelector('.item-checkbox');
+    checkbox.dataset.quantity = quantity;
+    const price = parseFloat(checkbox.dataset.price);
+    const total = (price * quantity).toFixed(2);
+    row.querySelector('.item-total').textContent = `$${total}`;
+    updateCartTotal();
 }
 
 function removeItem(button) {
-    button.closest('.cart-item, tr').remove();
+    const row = button.closest('tr') || button.closest('.cart-item');
+    row.remove();
     updateCartTotal();
-    checkSelectAll();
 }
 
 function selectAllItems() {
-    const selectAll = document.getElementById('select-all');
-    if (selectAll) selectAll.checked = !selectAll.checked;
-    document.querySelectorAll('.item-checkbox').forEach(checkbox => {
-        checkbox.checked = selectAll.checked;
+    const checkboxes = document.querySelectorAll('.item-checkbox');
+    const selectAll = document.querySelector('#select-all');
+    const allChecked = selectAll.checked;
+    checkboxes.forEach(checkbox => checkbox.checked = !allChecked);
+    selectAll.checked = !allChecked;
+    document.querySelectorAll('.btn-outline-danger[onclick="selectAllItems()"]').forEach(btn => {
+        btn.textContent = `Select All (${document.querySelectorAll('.item-checkbox:checked').length})`;
     });
     updateCartTotal();
 }
 
 function deleteSelected() {
-    document.querySelectorAll('.item-checkbox:checked').forEach(checkbox => {
-        checkbox.closest('.cart-item, tr').remove();
+    const checkboxes = document.querySelectorAll('.item-checkbox:checked');
+    checkboxes.forEach(checkbox => {
+        const row = checkbox.closest('tr') || checkbox.closest('.cart-item');
+        row.remove();
     });
     updateCartTotal();
-    checkSelectAll();
 }
 
-function checkSelectAll() {
-    const selectAll = document.getElementById('select-all');
-    if (selectAll) {
-        selectAll.checked = document.querySelectorAll('.item-checkbox').length === 
-                           document.querySelectorAll('.item-checkbox:checked').length;
-    }
+function moveToLikes() {
+    // Placeholder: Implement logic to move selected items to a "Likes" list
+    alert('Move to Likes functionality not implemented yet.');
 }
 
-// Cart event listeners
-document.getElementById('select-all')?.addEventListener('change', function() {
-    document.querySelectorAll('.item-checkbox').forEach(checkbox => {
-        checkbox.checked = this.checked;
-    });
-    updateCartTotal();
-});
-
-document.querySelectorAll('.item-checkbox').forEach(checkbox => {
-    checkbox.addEventListener('change', function() {
-        checkSelectAll();
-        updateCartTotal();
-    });
-});
-
-document.querySelectorAll('.item-quantity').forEach(input => {
-    input.addEventListener('input', function() {
-        if (this.value < 1) this.value = 1;
-        const checkbox = this.closest('.cart-item, tr').querySelector('.item-checkbox');
-        checkbox.setAttribute('data-quantity', this.value);
-        if (checkbox.checked) {
-            updateCartTotal();
-        }
-    });
-});
-
-document.querySelectorAll('a[href="checkout.html"]').forEach(button => {
-    button.addEventListener('click', function(e) {
-        const selectedItems = [];
-        document.querySelectorAll('.item-checkbox:checked').forEach(checkbox => {
-            const container = checkbox.closest('.cart-item, tr');
-            const item = {
-                name: checkbox.getAttribute('data-name'),
-                price: parseFloat(checkbox.getAttribute('data-price')),
-                quantity: parseInt(container.querySelector('.item-quantity').value),
-                image: checkbox.getAttribute('data-image'),
-                total: parseFloat(container.querySelector('.item-total').textContent.replace('$', ''))
-            };
-            selectedItems.push(item);
+function updateCartTotal() {
+    const checkboxes = document.querySelectorAll('.item-checkbox:checked');
+    let total = 0;
+    let itemCount = 0;
+    const selectedItems = [];
+    checkboxes.forEach(checkbox => {
+        const quantity = parseInt(checkbox.dataset.quantity);
+        const price = parseFloat(checkbox.dataset.price);
+        total += quantity * price;
+        itemCount += quantity;
+        selectedItems.push({
+            name: checkbox.dataset.name,
+            price: checkbox.dataset.price,
+            quantity: checkbox.dataset.quantity,
+            image: checkbox.dataset.image
         });
-        localStorage.setItem('selectedCartItems', JSON.stringify(selectedItems));
+    });
+    document.querySelector('#cart-total').textContent = `$${total.toFixed(2)}`;
+    document.querySelector('#cart-total-mobile').textContent = `$${total.toFixed(2)}`;
+    document.querySelectorAll('.btn-outline-danger[onclick="selectAllItems()"]').forEach(btn => {
+        btn.textContent = `Select All (${itemCount})`;
+    });
+    // Save selected items to localStorage for checkout
+    localStorage.setItem('cartItems', JSON.stringify(selectedItems));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateCartTotal();
+    // Ensure checkboxes trigger total update
+    document.querySelectorAll('.item-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', updateCartTotal);
     });
 });
-
-// Initial calculation
-updateCartTotal();
 
 // CHECKOUT PAGE SCRIPT
 document.addEventListener('DOMContentLoaded', function() {
