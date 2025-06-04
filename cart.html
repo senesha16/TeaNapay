@@ -20,11 +20,11 @@
                     aria-controls="mainNavDrawer" aria-label="Toggle navigation">
                     <i class="bi bi-list fs-2"></i>
                 </button>
-                <a class="navbar-brand d-none d-lg-block" href="homepage.html#home">TEA-Napay</a>
-                <a class="navbar-brand d-none d-md-block d-lg-none mx-auto" href="homepage.html#home">TEA-Napay</a>
-                <a class="navbar-brand d-block d-md-none ms-5" href="homepage.html#home">TEA-Napay</a>
+                <a class="navbar-brand d-none d-lg-block" href="homepage.html#home">Shopping Cart</a>
+                <a class="navbar-brand d-none d-md-block d-lg-none mx-auto" href="homepage.html#home">Shopping Cart</a>
+                <a class="navbar-brand d-block d-md-none ms-5" href="homepage.html#home">Shopping Cart</a>
                 <div class="navbar-nav icons-nav flex-row align-items-center position-absolute top-50 end-0 translate-middle-y me-2">
-                    <a class="nav-link px-2" href="cart.html" aria-label="View cart"><i class="bi bi-cart4 fs-4"></i></a>
+                     <a class="nav-link px-2 active" href="cart.html" aria-label="View cart"><i class="bi bi-cart4 fs-4"></i></a>
                     <a class="nav-link px-2" href="index.html" aria-label="Log in"><i class="bi bi-person-circle fs-4"></i></a>
                 </div>
                 <!-- Desktop Navbar -->
@@ -44,7 +44,7 @@
                                     <li><a class="dropdown-item" href="#">Others</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#contact">CONTACT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#cartcontact">CONTACT</a></li>
                         </ul>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                                     <li><a class="dropdown-item" href="#">Others</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="#contact" data-bs-dismiss="offcanvas">CONTACT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#cartcontact" data-bs-dismiss="offcanvas">CONTACT</a></li>
                         </ul>
                     </div>
                 </div>
@@ -79,70 +79,136 @@
 
     <!-- Cart Section -->
     <section class="cart py-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Your Cart</h2>
-            <div class="row">
-                <div class="col-12">
-                    <div class="cart-card bg-white p-4 rounded shadow">
-                        <table class="table table-responsive">
-                            <thead>
-                                <tr>
-                                    <th><input type="checkbox" id="select-all" checked></th>
-                                    <th>Item</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td data-label="Select"><input type="checkbox" class="item-checkbox" checked data-price="2.50" data-quantity="1" data-name="Strawberry Sprinkle Donut" data-image="https://via.placeholder.com/80x80/d14d72/ffffff?text=Donut"></td>
-                                    <td data-label="Item">
-                                        <div class="d-flex align-items-center">
-                                            <img src="https://via.placeholder.com/80x80/d14d72/ffffff?text=Donut" alt="Strawberry Donut" class="img-fluid rounded-circle me-3" style="width: 60px; height: 60px;">
-                                            <span>Strawberry Sprinkle Donut</span>
-                                        </div>
-                                    </td>
-                                    <td data-label="Price">$2.50</td>
-                                    <td data-label="Quantity">
-                                        <input type="number" class="form-control w-50 item-quantity" value="1" min="1">
-                                    </td>
-                                    <td data-label="Total" class="item-total">$2.50</td>
-                                    <td data-label="Remove"><button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td data-label="Select"><input type="checkbox" class="item-checkbox" checked data-price="4.00" data-quantity="2" data-name="Strawberry Matcha Milk Tea" data-image="https://via.placeholder.com/80x80/d14d72/ffffff?text=Milk+Tea"></td>
-                                    <td data-label="Item">
-                                        <div class="d-flex align-items-center">
-                                            <img src="https://via.placeholder.com/80x80/d14d72/ffffff?text=Milk+Tea" alt="Milk Tea" class="img-fluid rounded-circle me-3" style="width: 60px; height: 60px;">
-                                            <span>Strawberry Matcha Milk Tea</span>
-                                        </div>
-                                    </td>
-                                    <td data-label="Price">$4.00</td>
-                                    <td data-label="Quantity">
-                                        <input type="number" class="form-control w-50 item-quantity" value="2" min="1">
-                                    </td>
-                                    <td data-label="Total" class="item-total">$8.00</td>
-                                    <td data-label="Remove"><button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="d-flex justify-content-between align-items-center mt-4">
-                            <h4>Total: <span id="cart-total">$10.50</span></h4>
-                            <a href="checkout.html" class="btn btn-custom rounded-pill px-4" id="proceed-to-checkout">Proceed to Checkout</a>
-                        </div>
+    <div class="container">
+        <h2 class="text-center mb-4">Your Cart</h2>
+        <!-- Cart Table (Desktop) -->
+        <div class="cart-table d-none d-md-block">
+            <div class="cart-card bg-white p-4 rounded shadow">
+                <table class="table table-cart">
+                    <thead>
+                        <tr>
+                            <th class="text-left"><input type="checkbox" id="select-all" checked></th>
+                            <th>Product</th>
+                            <th class="text-center">Unit Price</th>
+                            <th class="text-center">Quantity</th>
+                            <th class="text-center">Total Price</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" class="item-checkbox" checked data-price="2.50" data-quantity="1" data-name="Strawberry Sprinkle Donut" data-image="https://via.placeholder.com/80x80/d14d72/ffffff?text=Donut"></td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/80x80/d14d72/ffffff?text=Donut" alt="Strawberry Donut" class="me-3 rounded" style="width: 60px; height: 60px;">
+                                    <div>
+                                        <p class="mb-0">Strawberry Sprinkle Donut</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center">$2.50</td>
+                            <td class="text-center">
+                                <div class="input-group input-group-sm w-75 mx-auto">
+                                    <button class="btn btn-outline-secondary btn-sm" type="button" onclick="updateQuantity(this, -1)">-</button>
+                                    <input type="number" class="form-control text-center item-quantity" value="1" min="1">
+                                    <button class="btn btn-outline-secondary btn-sm" type="button" onclick="updateQuantity(this, 1)">+</button>
+                                </div>
+                            </td>
+                            <td class="text-center item-total">$2.50</td>
+                            <td class="text-center"><button class="btn btn-outline-danger btn-sm" onclick="removeItem(this)">Delete</button></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="item-checkbox" checked data-price="4.00" data-quantity="2" data-name="Strawberry Matcha Milk Tea" data-image="https://via.placeholder.com/80x80/d14d72/ffffff?text=Milk+Tea"></td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/80x80/d14d72/ffffff?text=Milk+Tea" alt="Milk Tea" class="me-3 rounded" style="width: 60px; height: 60px;">
+                                    <div>
+                                        <p class="mb-0">Strawberry Matcha Milk Tea</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center">$4.00</td>
+                            <td class="text-center">
+                                <div class="input-group input-group-sm w-75 mx-auto">
+                                    <button class="btn btn-outline-secondary btn-sm" type="button" onclick="updateQuantity(this, -1)">-</button>
+                                    <input type="number" class="form-control text-center item-quantity" value="2" min="1">
+                                    <button class="btn btn-outline-secondary btn-sm" type="button" onclick="updateQuantity(this, 1)">+</button>
+                                </div>
+                            </td>
+                            <td class="text-center item-total">$8.00</td>
+                            <td class="text-center"><button class="btn btn-outline-danger btn-sm" onclick="removeItem(this)">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="cart-footer d-flex justify-content-between align-items-center mt-4 flex-wrap">
+                    <div>
+                        <button class="btn btn-outline-danger me-2 mb-2" onclick="selectAllItems()">Select All (2)</button>
+                        <button class="btn btn-outline-danger mb-2" onclick="deleteSelected()">Delete</button>
+                    </div>
+                    <div class="d-flex align-items-center gap-3">
+                        <h4 class="mb-0">Total (2 items): <span id="cart-total">$10.50</span></h4>
+                        <a href="checkout.html" class="btn btn-primary btn-lg rounded-pill px-4">Check Out</a>
                     </div>
                 </div>
             </div>
-            <div class="text-center mt-4">
-                <a href="homepage.html#menu" class="btn btn-outline-custom rounded-pill px-4">Continue Shopping</a>
+        </div>
+        <!-- Mobile Card Layout -->
+        <div class="cart-items d-md-none">
+            <div class="cart-item card bg-white p-3 mb-3 shadow-sm">
+                <div class="d-flex align-items-start">
+                    <input type="checkbox" class="item-checkbox me-2" checked data-price="2.50" data-quantity="1" data-name="Strawberry Sprinkle Donut" data-image="https://via.placeholder.com/80x80/d14d72/ffffff?text=Donut">
+                    <img src="https://via.placeholder.com/80x80/d14d72/ffffff?text=Donut" alt="Strawberry Donut" class="me-3 rounded" style="width: 50px; height: 50px;">
+                    <div class="flex-grow-1">
+                        <p class="mb-1">Strawberry Sprinkle Donut</p>
+                        <p class="mb-1">Unit Price: $2.50</p>
+                        <div class="d-flex align-items-center">
+                            <div class="input-group input-group-sm w-50 me-3">
+                                <button class="btn btn-outline-secondary btn-sm" type="button" onclick="updateQuantity(this, -1)">-</button>
+                                <input type="number" class="form-control text-center item-quantity" value="1" min="1">
+                                <button class="btn btn-outline-secondary btn-sm" type="button" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <p class="mb-0">Total: <span class="item-total">$2.50</span></p>
+                        </div>
+                        <button class="btn btn-outline-danger btn-sm mt-2" onclick="removeItem(this)">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="cart-item card bg-white p-3 mb-3 shadow-sm">
+                <div class="d-flex align-items-start">
+                    <input type="checkbox" class="item-checkbox me-2" checked data-price="4.00" data-quantity="2" data-name="Strawberry Matcha Milk Tea" data-image="https://via.placeholder.com/80x80/d14d72/ffffff?text=Milk+Tea">
+                    <img src="https://via.placeholder.com/80x80/d14d72/ffffff?text=Milk+Tea" alt="Milk Tea" class="me-3 rounded" style="width: 50px; height: 50px;">
+                    <div class="flex-grow-1">
+                        <p class="mb-1">Strawberry Matcha Milk Tea</p>
+                        <p class="mb-1">Unit Price: $4.00</p>
+                        <div class="d-flex align-items-center">
+                            <div class="input-group input-group-sm w-50 me-3">
+                                <button class="btn btn-outline-secondary btn-sm" type="button" onclick="updateQuantity(this, -1)">-</button>
+                                <input type="number" class="form-control text-center item-quantity" value="2" min="1">
+                                <button class="btn btn-outline-secondary btn-sm" type="button" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <p class="mb-0">Total: <span class="item-total">$8.00</span></p>
+                        </div>
+                        <button class="btn btn-outline btn-sm mt-2" onclick="removeItem(this)">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="cart-footer d-flex justify-content-between align-items-center mt-4 flex-wrap">
+                <div>
+                    <button class="btn btn-outline-danger me-2 mb-2" onclick="selectAllItems()">Select All (2)</button>
+                    <button class="btn btn-outline-danger mb-2" onclick="deleteSelected()">Delete</button>
+                    <button class="btn btn-outline-secondary mb-2">Move to Likes</button>
+                </div>
+                <div>
+                    <h4 class="mb-0">Total (2 items): <span id="cart-total-mobile">$10.50</span></h4>
+                    <a href="checkout.html" class="btn btn-custom rounded-pill w-100 rounded-pill px-4 mt-2">Check Out</a>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Footer (same as homepage) -->
-    <footer class="footer animate__animated animate__fadeIn" id="contact">
+    <footer class="cartcontact footer animate__animated animate__fadeIn" id="cartcontact">
         <div class="container">
             <div class="row g-4">
                 <div class="col-12 col-md-1 text-md-start">
@@ -184,68 +250,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // JavaScript to handle checkbox and quantity updates
-        function updateCartTotal() {
-            let total = 0;
-            document.querySelectorAll('.item-checkbox:checked').forEach(checkbox => {
-                const price = parseFloat(checkbox.getAttribute('data-price'));
-                const quantity = parseInt(checkbox.closest('tr').querySelector('.item-quantity').value);
-                const itemTotal = price * quantity;
-                checkbox.closest('tr').querySelector('.item-total').textContent = `$${itemTotal.toFixed(2)}`;
-                total += itemTotal;
-            });
-            document.getElementById('cart-total').textContent = `$${total.toFixed(2)}`;
-        }
-
-        // Select All checkbox functionality
-        document.getElementById('select-all').addEventListener('change', function() {
-            document.querySelectorAll('.item-checkbox').forEach(checkbox => {
-                checkbox.checked = this.checked;
-            });
-            updateCartTotal();
-        });
-
-        // Individual checkbox functionality
-        document.querySelectorAll('.item-checkbox').forEach(checkbox => {
-            checkbox.addEventListener('change', function() {
-                document.getElementById('select-all').checked = 
-                    document.querySelectorAll('.item-checkbox').length === 
-                    document.querySelectorAll('.item-checkbox:checked').length;
-                updateCartTotal();
-            });
-        });
-
-        // Quantity input functionality
-        document.querySelectorAll('.item-quantity').forEach(input => {
-            input.addEventListener('input', function() {
-                const checkbox = this.closest('tr').querySelector('.item-checkbox');
-                checkbox.setAttribute('data-quantity', this.value);
-                if (checkbox.checked) {
-                    updateCartTotal();
-                }
-            });
-        });
-
-        // Store selected items in localStorage on checkout
-        document.getElementById('proceed-to-checkout').addEventListener('click', function(e) {
-            const selectedItems = [];
-            document.querySelectorAll('.item-checkbox:checked').forEach(checkbox => {
-                const row = checkbox.closest('tr');
-                const item = {
-                    name: checkbox.getAttribute('data-name'),
-                    price: parseFloat(checkbox.getAttribute('data-price')),
-                    quantity: parseInt(row.querySelector('.item-quantity').value),
-                    image: checkbox.getAttribute('data-image'),
-                    total: parseFloat(row.querySelector('.item-total').textContent.replace('$', ''))
-                };
-                selectedItems.push(item);
-            });
-            localStorage.setItem('selectedCartItems', JSON.stringify(selectedItems));
-        });
-
-        // Initial calculation
-        updateCartTotal();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
