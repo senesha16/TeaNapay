@@ -272,10 +272,6 @@ main {
     transition: transform 0.3s ease;
 }
 
-.login-card:hover, .register-card:hover {
-    transform: scale(1.05);
-}
-
 .login-card h2, .register-card h2 {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
