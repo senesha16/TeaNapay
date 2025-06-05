@@ -1,6 +1,6 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu | TEA-Napay</title>
@@ -10,25 +10,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="style.css">
 </head>
-
-    <body>
-        <header class="main-header">
-        <nav class="navbar navbar-expand-lg">
+<body>
+    <!-- NAV BAR -->
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container-fluid position-relative">
-                <!-- Offcanvas Toggler -->
                 <button class="navbar-toggler d-lg-none position-absolute top-50 start-0 translate-middle-y ms-2"
                     type="button" data-bs-toggle="offcanvas" data-bs-target="#mainNavDrawer"
                     aria-controls="mainNavDrawer" aria-label="Toggle navigation">
                     <i class="bi bi-list fs-2"></i>
                 </button>
-                <a class="navbar-brand d-none d-lg-block" href="#home">TEA-Napay</a>
+                <a class="navbar-brand d-none d-lg-block" href="homepage.html#home">TEA-Napay</a>
                 <a class="navbar-brand d-none d-md-block d-lg-none mx-auto" href="homepage.html#home">TEA-Napay</a>
-                <a class="navbar-brand d-block d-md-none ms-5" href="#home">TEA-Napay</a>
+                <a class="navbar-brand d-block d-md-none ms-5" href="homepage.html#home">TEA-Napay</a>
                 <div class="navbar-nav icons-nav flex-row align-items-center position-absolute top-50 end-0 translate-middle-y me-2">
                     <a class="nav-link px-2" href="cart.html" aria-label="View cart"><i class="bi bi-cart4 fs-4"></i></a>
-                    <a class="nav-link px-2" href="index.html" aria-label="Log in"><i class="bi bi-person-circle fs-4"></i></a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle px-2" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle fs-4"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person-circle me-2"></i> See Profile Information</a></li>
+                            <li><button class="dropdown-item" onclick="updatePersonalInfo()"><i class="bi bi-pencil-square me-2"></i> Update Personal Information</button></li>
+                            <li><button class="dropdown-item" onclick="updatePassword()"><i class="bi bi-key me-2"></i> Update Password</button></li>
+                            <li><button class="dropdown-item text-danger" onclick="logout()"><i class="bi bi-box-arrow-right me-2"></i> Logout</button></li>
+                        </ul>
+                    </li>
                 </div>
-                <!-- Desktop Navbar -->
                 <div class="collapse navbar-collapse d-none d-lg-block" id="mainNav">
                     <div class="navbar-nav-container d-flex justify-content-center w-100">
                         <ul class="navbar-nav">
@@ -49,7 +57,6 @@
                         </ul>
                     </div>
                 </div>
-                <!-- Offcanvas Drawer for Mobile/Tablet -->
                 <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mainNavDrawer" aria-labelledby="mainNavDrawerLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="mainNavDrawerLabel">TEA-Napay</h5>
@@ -57,11 +64,11 @@
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav flex-column">
-                            <li class="nav-item"><a class="nav-link" href="#home" data-bs-dismiss="offcanvas">HOME</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#about" data-bs-dismiss="offcanvas">ABOUT</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#service" data-bs-dismiss="offcanvas">SERVICE</a></li>
+                            <li class="nav-item"><a class="nav-link" href="homepage.html#home" data-bs-dismiss="offcanvas">HOME</a></li>
+                            <li class="nav-item"><a class="nav-link" href="homepage.html#about" data-bs-dismiss="offcanvas">ABOUT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="homepage.html#service" data-bs-dismiss="offcanvas">SERVICE</a></li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#menu" id="menuDropdownDrawer" role="button" data-bs-toggle="dropdown" aria-expanded="false">MENU</a>
+                                <a class="nav-link dropdown-toggle" href="homepage.html#menu" id="menuDropdownDrawer" role="button" data-bs-toggle="dropdown" aria-expanded="false">MENU</a>
                                 <ul class="dropdown-menu" aria-labelledby="menuDropdownDrawer">
                                     <li><a class="dropdown-item" href="#">Donuts</a></li>
                                     <li><a class="dropdown-item" href="#">Bread</a></li>
@@ -78,8 +85,428 @@
         </nav>
     </header>
 
-        <main></main>
-        <footer class="footer animate__animated animate__fadeIn" id="contact">
+    <main>
+        <div class="container mt-5">
+            <section id="menu">
+                <h2 class="text-center menu-title animate__animated animate__fadeIn">Our Menu</h2>
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 mb-4">
+                        <div class="filter-section shadow-sm rounded p-4">
+                            <h4 class="mb-3">Filter Products</h4>
+                            <div class="category-filter mb-3">
+                                <label for="categorySelect" class="form-label">Category</label>
+                                <select id="categorySelect" class="form-select">
+                                    <option value="all" selected>All</option>
+                                    <option value="Bread">Bread</option>
+                                    <option value="Doughnut">Doughnuts</option>
+                                    <option value="Cakes">Cakes</option>
+                                    <option value="Drinks">Drinks</option>
+                                    <option value="Others">Others</option>
+                                </select>
+                            </div>
+                            <div class="price-range mb-3">
+                                <label class="form-label">Price Range: ₱<span id="minPrice">0</span> - ₱<span id="maxPrice">1500</span></label>
+                                <input type="range" class="form-range" id="priceSlider" min="0" max="1500" value="1500">
+                            </div>
+                            <div class="availability-filter">
+                                <input type="checkbox" class="form-check-input" id="availableOnly" checked>
+                                <label class="form-check-label" for="availableOnly">Show Available Products Only</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-8">
+                        <div class="row justify-content-center">
+                            <div class="col-12 menu-section" data-category="Bread">
+                                <h2 class="text-center mb-4">Bread</h2>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="150" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/loaf.png" class="card-img-top mx-auto mt-3" alt="Cheese Loaf">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Cheese Loaf</h5>
+                                                <p class="card-text">A cheese loaf is processed cheese shaped into a rectangular block for easy slicing, made by blending cheese with salt or emulsifiers for a smooth texture.</p>
+                                                <p class="product-price">₱150.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="140" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/raisin.png" class="card-img-top mx-auto mt-3" alt="Raisin Loaf">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Raisin Loaf</h5>
+                                                <p class="card-text">A sweet or savory bread baked with raisins or other dried fruits mixed into the dough, often enriched with cinnamon or nutmeg.</p>
+                                                <p class="product-price">₱140.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="160" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/almond.png" class="card-img-top mx-auto mt-3" alt="Almond Bread">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Almond Bread</h5>
+                                                <p class="card-text">Made with almond flour and whole almonds, often resulting in a dense, nutty texture. Our bread can be sweet and savory.</p>
+                                                <p class="product-price">₱160.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="130" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/porkfloss.png" class="card-img-top mx-auto mt-3" alt="Pork Floss">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Pork Floss</h5>
+                                                <p class="card-text">Dried, shredded pork with a cotton candy-like texture. Made by simmering pork in soy sauce and spices, then shredded and dry-fried until crisp.</p>
+                                                <p class="product-price">₱130.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="80" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/ensaymada.png" class="card-img-top mx-auto mt-3" alt="Ensaymada">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Ensaymada</h5>
+                                                <p class="card-text">A Filipino brioche-like bun topped with buttercream and cheese. Perfect for breakfast or snacks, often paired with coffee or tea.</p>
+                                                <p class="product-price">₱80.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="100" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/garlicbread.png" class="card-img-top mx-auto mt-3" alt="Garlic Bread">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Garlic Bread</h5>
+                                                <p class="card-text">Our bread slathered with garlic butter and herbs, then baked or toasted. Aromatic and savory, great as a side or snack.</p>
+                                                <p class="product-price">₱100.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="120" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/hamcheese.png" class="card-img-top mx-auto mt-3" alt="Ham & Cheese Boat">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Ham & Cheese Boat</h5>
+                                                <p class="card-text">Boat-shaped bread filled with savory ham and melted cheese, often topped with herbs or sauce.</p>
+                                                <p class="product-price">₱120.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="110" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/pizzasausage.png" class="card-img-top mx-auto mt-3" alt="Pizza Sausage">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Pizza Sausage</h5>
+                                                <p class="card-text">Bread or rolls filled or topped with sausage, tomato sauce, cheese, and herbs. A mini pizza experience.</p>
+                                                <p class="product-price">₱110.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="130" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/springroll.png" class="card-img-top mx-auto mt-3" alt="Spring Roll Floss Overload">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Spring Roll Floss Overload</h5>
+                                                <p class="card-text">Crispy spring roll filled or topped with pork or chicken floss, often with mayo or sesame seeds. Crunchy and umami-rich.</p>
+                                                <p class="product-price">₱130.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="140" data-available="true">
+                                        <div class="card h-100 text center shadow-sm">
+                                            <img src="./img/soboro.png" class="card-img-top mx-auto mt-3" alt="Soboro Peanut Bread">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Soboro Peanut Bread</h5>
+                                                <p class="card-text">Korean sweet bun topped with crunchy peanut streusel, sometimes filled with red bean. Soft and nutty.</p>
+                                                <p class="product-price">₱140.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="90" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/coffeebun.png" class="card-img-top mx-auto mt-3" alt="Coffee Bun">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Coffee Bun</h5>
+                                                <p class="card-text">Soft, fluffy bun with a coffee-flavored crust, sometimes filled with butter or cream. Perfect for coffee lovers.</p>
+                                                <p class="product-price">₱90.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="150" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/garliccreamcheese.png" class="card-img-top mx-auto mt-3" alt="Korean Garlic Cream Cheese">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Korean Garlic Cream Cheese</h5>
+                                                <p class="card-text">Sweet bun filled with cream cheese and dipped in garlic butter custard. A viral Korean street food snack.</p>
+                                                <p class="product-price">₱150.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 menu-section" data-category="Doughnut">
+                                <h2 class="text-center mb-4">Doughnuts</h2>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Doughnut" data-price="60" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/berrydonut.png" class="card-img-top mx-auto mt-3" alt="Strawberry Sprinkle Donut">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Strawberry Sprinkle Donut</h5>
+                                                <p class="card-text">A delightful yeast donut glazed with vibrant strawberry icing and topped with colorful sprinkles, offering a sweet and playful burst of flavor in every bite.</p>
+                                                <p class="product-price">₱60.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Doughnut" data-price="55" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/chocodonut.png" class="card-img-top mx-auto mt-3" alt="Chocolate Donut">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Chocolate Donut</h5>
+                                                <p class="card-text">A chocolate donut is a sweet, ring-shaped or filled pastry made from dough, typically deep-fried or baked, and coated or infused with chocolate.</p>
+                                                <p class="product-price">₱55.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Doughnut" data-price="65" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/peanutdonut.png" class="card-img-top mx-auto mt-3" alt="Chocolate Peanut Donut">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Chocolate Peanut Donut</h5>
+                                                <p class="card-text">A chocolate peanut donut featuring a chocolate glaze or filling with peanut flavors like peanut butter or chopped peanuts.</p>
+                                                <p class="product-price">₱65.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 menu-section" data-category="Cakes">
+                                <h2 class="text-center mb-4">Cakes</h2>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Cakes" data-price="1200" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/chocolatemoist.png" class="card-img-top mx-auto mt-3" alt="Chocolate Moist Cake">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Chocolate Moist Cake</h5>
+                                                <p class="card-text">A rich, fudgy cake known for its dense, moist texture, often frosted with chocolate ganache or buttercream.</p>
+                                                <p class="product-price">₱1,200.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Cakes" data-price="1100" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/yemacake.png" class="card-img-top mx-auto mt-3" alt="Yema Cake">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Yema Cake</h5>
+                                                <p class="card-text">A Filipino chiffon cake topped or filled with creamy yema custard made from egg yolks and condensed milk.</p>
+                                                <p class="product-price">₱1,100.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Cakes" data-price="1000" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/custardcake.png" class="card-img-top mx-auto mt-3" alt="Custard Cake">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Custard Cake</h5>
+                                                <p class="card-text">A fluffy chiffon base with a smooth, baked custard topping, offering a creamy, delicate flavor.</p>
+                                                <p class="product-price">₱1,000.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Cakes" data-price="950" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/chiffoncake.png" class="card-img-top mx-auto mt-3" alt="Chiffon Cake">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Chiffon Cake</h5>
+                                                <p class="card-text">A light, airy cake made with oil, eggs, and flour. Known for its spongy texture and subtle flavor.</p>
+                                                <p class="product-price">₱950.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Cakes" data-price="1400" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/sansrival.png" class="card-img-top mx-auto mt-3" alt="Sansrival Cake">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Sansrival Cake</h5>
+                                                <p class="card-text">A layered cake of crispy meringue wafers, buttercream, and cashews. Crunchy and indulgent.</p>
+                                                <p class="product-price">₱1,400.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Cakes" data-price="1300" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/mangocake.png" class="card-img-top mx-auto mt-3" alt="Mango Cake">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Mango Cake</h5>
+                                                <p class="card-text">A chiffon or sponge cake layered with mango slices and puree. Light and refreshing.</p>
+                                                <p class="product-price">₱1,300.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Cakes" data-price="1250" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/mochacake.png" class="card-img-top mx-auto mt-3" alt="Mocha Cake">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Mocha Cake</h5>
+                                                <p class="card-text">Infused with coffee and chocolate, layered with mocha buttercream. A treat for coffee lovers.</p>
+                                                <p class="product-price">₱1,250.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 menu-section" data-category="Drinks">
+                                <h2 class="text-center mb-4">Drinks</h2>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Drinks" data-price="100" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/bluesoda.png" class="card-img-top mx-auto mt-3" alt="Blueberry Soda">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Blueberry Soda</h5>
+                                                <p class="card-text">A fizzy, refreshing drink with sweet-tart blueberry flavor. Light and fruity.</p>
+                                                <p class="product-price">₱100.00 PHP</p>
+                                                <div class="d-flex justify-content-center gap-3 mb-3">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="blueberrySize" value="Small" id="smallSizeBlueberry" checked>
+                                                        <label class="form-check-label" for="smallSizeBlueberry">Small</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="blueberrySize" value="Medium" id="mediumSizeBlueberry">
+                                                        <label class="form-check-label" for="mediumSizeBlueberry">Medium</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="blueberrySize" value="Large" id="largeSizeBlueberry">
+                                                        <label class="form-check-label" for="largeSizeBlueberry">Large</label>
+                                                    </div>
+                                                </div>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Drinks" data-price="100" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/strawberrysoda.png" class="card-img-top mx-auto mt-3" alt="Strawberry Soda">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Strawberry Soda</h5>
+                                                <p class="card-text">A sparkling drink with juicy strawberry taste. Perfectly refreshing.</p>
+                                                <p class="product-price">₱100.00 PHP</p>
+                                                <div class="d-flex justify-content-center gap-3 mb-3">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="strawberrySize" value="Small" id="smallSizeStrawberry" checked>
+                                                        <label class="form-check-label" for="smallSizeStrawberry">Small</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="strawberrySize" value="Medium" id="mediumSizeStrawberry">
+                                                        <label class="form-check-label" for="mediumSizeStrawberry">Medium</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="strawberrySize" value="Large" id="largeSizeStrawberry">
+                                                        <label class="form-check-label" for="largeSizeStrawberry">Large</label>
+                                                    </div>
+                                                </div>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Drinks" data-price="100" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/greenapplesoda.png" class="card-img-top mx-auto mt-3" alt="Green Apple Soda">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Green Apple Soda</h5>
+                                                <p class="card-text">Crisp and tangy soda bursting with green apple flavor. Zesty and fun.</p>
+                                                <p class="product-price">₱100.00 PHP</p>
+                                                <div class="d-flex justify-content-center gap-3 mb-3">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="greenAppleSize" value="Small" id="smallSizeGreenApple" checked>
+                                                        <label class="form-check-label" for="smallSizeGreenApple">Small</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="greenAppleSize" value="Medium" id="mediumSizeGreenApple">
+                                                        <label class="form-check-label" for="mediumSizeGreenApple">Medium</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="greenAppleSize" value="Large" id="largeSizeGreenApple">
+                                                        <label class="form-check-label" for="largeSizeGreenApple">Large</label>
+                                                    </div>
+                                                </div>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 menu-section" data-category="Others">
+                                <h2 class="text-center mb-4">Others</h2>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Others" data-price="80" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/brownies.png" class="card-img-top mx-auto mt-3" alt="Brownies">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Brownies</h5>
+                                                <p class="card-text">Dense, fudgy chocolate squares, often studded with nuts or chocolate chips. Baked to a chewy or cakey texture, they’re a rich, indulgent dessert perfect for snacks or gifting.</p>
+                                                <p class="product-price">₱80.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Others" data-price="85" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/butterscotch.png" class="card-img-top mx-auto mt-3" alt="Butterscotch">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Butterscotch</h5>
+                                                <p class="card-text">A sweet treat made from brown sugar, butter, and sometimes cream, with a caramel-like, buttery flavor. Often served as bars, squares, or drizzled over desserts.</p>
+                                                <p class="product-price">₱85.00 PHP</p>
+                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cart-notification" id="cartNotification" role="alert" aria-live="assertive">
+                    <button class="close-btn" onclick="hideCartNotification()">×</button>
+                    <p class="status">✓ Item added to your cart</p>
+                    <div class="product-info">
+                        <img src="./img/placeholder.png" alt="Product Image" class="product-image">
+                        <div class="product-details">
+                            <strong class="product-name">Product Name</strong><br>
+                            <span class="product-size">Default</span> - <span class="product-price">₱0.00 PHP</span>
+                        </div>
+                    </div>
+                    <a href="cart.html" class="view-cart btn btn-custom">View My Cart (0)</a>
+                    <button class="checkout btn btn-custom">Check Out</button>
+                    <a href="#" class="continue-shopping">Continue Shopping</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer animate__animated animate__fadeIn" id="contact">
         <div class="container">
             <div class="row g-4">
                 <div class="col-12 col-md-1 text-md-start">
@@ -91,18 +518,18 @@
                     </ul>
                 </div>
                 <div class="col-12 col-md-5 text-center">
-                    <h5 class="footer-heading">CONTACT DETAILS</h5>
+                    <h5 class="footer-heading">Contact Details</h5>
                     <p class="footer-text">
                         Customer Hotline: +639687153421<br>
                         racapacia@yahoo.com
                     </p>
                     <div class="social-icons">
                         <a href="https://www.facebook.com/profile.php?id=100067176574296" class="social-icon" aria-label="Visit our Facebook page"><i class="bi bi-facebook"></i></a>
-                        <a href="https://www.facebook.com/messages/t/102498215320537" class="social-icon" aria-label="Visit our Facebook page"><i class="bi bi-messenger"></i></a>
+                        <a href="https://www.facebook.com/messages/t/102498215320537" class="social-icon" aria-label="Visit our Facebook Messenger"><i class="bi bi-messenger"></i></a>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 text-center text-md-start">
-                    <h5 class="footer-heading">SEND US A MESSAGE</h5>
+                    <h5 class="footer-heading">Send Us a Message</h5>
                     <div class="contact-form">
                         <div class="mb-3">
                             <input type="text" class="form-control" placeholder="Name *" required aria-label="Your name">
@@ -113,23 +540,15 @@
                         <div class="mb-3">
                             <textarea class="form-control" placeholder="Message *" rows="3" required aria-label="Your message"></textarea>
                         </div>
-                        <button type="button" class="btn btn-custom rounded-pill px-4">SUBMIT</button>
+                        <button type="button" class="btn btn-custom rounded-pill px-4">Submit</button>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-        <!-- Bootstrap JavaScript Libraries -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"
-        ></script>
 
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-            crossorigin="anonymous"
-        ></script>
-    </body>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
 </html>

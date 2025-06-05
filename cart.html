@@ -11,8 +11,9 @@
 </head>
 <body>
     <!-- Header (same as homepage) -->
+    <!--NAV BAR -->
     <header class="main-header">
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container-fluid position-relative">
                 <!-- Offcanvas Toggler -->
                 <button class="navbar-toggler d-lg-none position-absolute top-50 start-0 translate-middle-y ms-2"
@@ -20,12 +21,38 @@
                     aria-controls="mainNavDrawer" aria-label="Toggle navigation">
                     <i class="bi bi-list fs-2"></i>
                 </button>
-                <a class="navbar-brand d-none d-lg-block" href="homepage.html#home">Shopping Cart</a>
-                <a class="navbar-brand d-none d-md-block d-lg-none mx-auto" href="homepage.html#home">Shopping Cart</a>
-                <a class="navbar-brand d-block d-md-none ms-5" href="homepage.html#home">Shopping Cart</a>
+                <a class="navbar-brand d-none d-lg-block" href="homepage.html#home">TEA-Napay</a>
+                <a class="navbar-brand d-none d-md-block d-lg-none mx-auto" href="homepage.html#home">TEA-Napay</a>
+                <a class="navbar-brand d-block d-md-none ms-5" href="homepage.html#home">TEA-Napay</a>
                 <div class="navbar-nav icons-nav flex-row align-items-center position-absolute top-50 end-0 translate-middle-y me-2">
-                     <a class="nav-link px-2 active" href="cart.html" aria-label="View cart"><i class="bi bi-cart4 fs-4"></i></a>
-                    <a class="nav-link px-2" href="index.html" aria-label="Log in"><i class="bi bi-person-circle fs-4"></i></a>
+                    <a class="nav-link px-2" href="cart.html" aria-label="View cart"><i class="bi bi-cart4 fs-4"></i></a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle px-2" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle fs-4"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                          <li>
+                              <a class="dropdown-item" href="profile.html">
+                                  <i class="bi bi-person-circle me-2"></i> See Profile Information
+                              </a>
+                            </li>
+                          <li>
+                            <button class="dropdown-item" onclick="updatePersonalInfo()">
+                              <i class="bi bi-pencil-square me-2"></i> Update Personal Information
+                            </button>
+                          </li>
+                          <li>
+                            <button class="dropdown-item" onclick="updatePassword()">
+                              <i class="bi bi-key me-2"></i> Update Password
+                            </button>
+                          </li>
+                          <li>
+                            <button class="dropdown-item text-danger" onclick="logout()">
+                              <i class="bi bi-box-arrow-right me-2"></i> Logout
+                            </button>
+                          </li>
+                        </ul>
+                    </li>
                 </div>
                 <!-- Desktop Navbar -->
                 <div class="collapse navbar-collapse d-none d-lg-block" id="mainNav">
@@ -44,7 +71,7 @@
                                     <li><a class="dropdown-item" href="#">Others</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="#cartcontact">CONTACT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#contact">CONTACT</a></li>
                         </ul>
                     </div>
                 </div>
@@ -69,7 +96,7 @@
                                     <li><a class="dropdown-item" href="#">Others</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="#cartcontact" data-bs-dismiss="offcanvas">CONTACT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#contact" data-bs-dismiss="offcanvas">CONTACT</a></li>
                         </ul>
                     </div>
                 </div>
@@ -100,7 +127,7 @@
                             <td><input type="checkbox" class="item-checkbox" checked data-price="2.50" data-quantity="1" data-name="Strawberry Sprinkle Donut" data-image="https://via.placeholder.com/80x80/d14d72/ffffff?text=Donut"></td>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="https://via.placeholder.com/80x80/d14d72/ffffff?text=Donut" alt="Strawberry Donut" class="me-3 rounded" style="width: 60px; height: 60px;">
+                                    <img src="https://via.placeholder.com/80x80/d14d72/ffffff?text=Donut" alt="Strawberry Donut" class="me-3" style="width: 60px; height: 60px;">
                                     <div>
                                         <p class="mb-0">Strawberry Sprinkle Donut</p>
                                     </div>
@@ -155,7 +182,7 @@
                     </div>
                     <div class="d-flex align-items-center gap-3">
                         <h4 class="mb-0">Total (2 items): <span id="cart-total">$10.50</span></h4>
-                        <a href="checkout.html" class="btn btn-primary btn-lg rounded-pill px-4">Check Out</a>
+                        <a href="checkout.html" class="btn btn-outline-danger btn-lg rounded-pill px-4">Check Out</a>
                     </div>
                 </div>
             </div>

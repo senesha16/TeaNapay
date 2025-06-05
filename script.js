@@ -47,8 +47,120 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// MENU PAGE SCRIPT
+document.addEventListener('DOMContentLoaded', () => {
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const priceSlider = document.getElementById('priceSlider');
+        const minPriceDisplay = document.getElementById('minPrice');
+        const maxPriceDisplay = document.getElementById('maxPrice');
+        const availableOnlyCheckbox = document.getElementById('availableOnly');
+        const productItems = document.querySelectorAll('.product-item');
+        const menuSections = document.querySelectorAll('.menu-section');
+        let cartCount = 0; // Track items in cart
+
+        // Filter products
+        let selectedCategory = 'all';
+        let maxPrice = 2500;
+        let showAvailableOnly = true;
+
+        priceSlider.addEventListener('input', () => {
+            maxPrice = parseInt(priceSlider.value);
+            maxPriceDisplay.textContent = maxPrice.toLocaleString();
+            filterProducts();
+        });
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                selectedCategory = button.dataset.category;
+                filterProducts();
+            });
+        });
+
+        availableOnlyCheckbox.addEventListener('change', () => {
+            showAvailableOnly = availableOnlyCheckbox.checked;
+            filterProducts();
+        });
+
+        function filterProducts() {
+            let visibleSections = new Set();
+            productItems.forEach(item => {
+                const category = item.dataset.category;
+                const price = parseInt(item.dataset.price);
+                const isAvailable = item.dataset.available === 'true';
+                const matchesCategory = selectedCategory === 'all' || category === selectedCategory;
+                const matchesPrice = price <= maxPrice;
+                const matchesAvailability = !showAvailableOnly || isAvailable;
+
+                if (matchesCategory && matchesPrice && matchesAvailability) {
+                    item.style.display = 'block';
+                    visibleSections.add(category);
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            menuSections.forEach(section => {
+                const sectionCategory = section.dataset.category;
+                section.style.display = visibleSections.has(sectionCategory) ? 'block' : 'none';
+            });
+        }
+
+        // Cart notification functionality
+        function showCartNotification(productName, productImage, productDetails) {
+            const notification = document.getElementById('cartNotification');
+            const productImg = notification.querySelector('.product-info img');
+            const productDetailsElement = notification.querySelector('.product-details');
+            const cartButton = notification.querySelector('.view-cart');
+
+            productImg.src = productImage;
+            productImg.alt = productName;
+            productDetailsElement.innerHTML = `<strong>${productName}</strong><br>${productDetails}`;
+            cartButton.textContent = `VIEW MY CART (${cartCount})`;
+            notification.style.display = 'block';
+
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 5000);
+        }
+
+        window.hideCartNotification = function () {
+            document.getElementById('cartNotification').style.display = 'none';
+        };
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const card = button.closest('.card');
+                const productName = card.querySelector('.card-title').textContent;
+                const productImage = card.querySelector('.card-img-top').src;
+                const productPrice = card.querySelector('.product-price').textContent;
+                const sizeInputs = card.querySelectorAll('.form-check-input:checked');
+                const selectedSize = sizeInputs.length > 0 ? sizeInputs[0].value : 'Default';
+                const productDetails = `${selectedSize} - ${productPrice}`;
+
+                cartCount++;
+                showCartNotification(productName, productImage, productDetails);
+            });
+        });
+
+        document.querySelector('.view-cart').addEventListener('click', () => {
+            window.location.href = '/cart'; // Replace with your cart page URL
+        });
+
+        document.querySelector('.checkout').addEventListener('click', () => {
+            window.location.href = '/checkout'; // Replace with your checkout page URL
+        });
+
+        document.querySelector('.continue-shopping').addEventListener('click', (e) => {
+            e.preventDefault();
+            hideCartNotification();
+        });
+
+        filterProducts();
+    });
+
 // CART PAGE SCRIPT
-// script.js
 function updateQuantity(button, change) {
     const input = button.parentElement.querySelector('.item-quantity');
     let quantity = parseInt(input.value) + change;
