@@ -47,6 +47,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+//  HOME PAGE SCRIPT
+// CAROUSEL SCRIPT
+document.querySelectorAll('.gallery-thumb').forEach(function(img) {
+    img.addEventListener('click', function() {
+        var src = this.getAttribute('data-img');
+        document.getElementById('galleryModalImg').src = src;
+    });
+});
+
 // MENU PAGE SCRIPT
 document.addEventListener('DOMContentLoaded', () => {
         const categoryButtons = document.querySelectorAll('.category-btn');

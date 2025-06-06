@@ -1,38 +1,46 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - TEA-Napay</title>
+    <title>Register - TEA-Napay</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="login-page">
+<body class="register-page">
     <!-- Header (same as other pages) -->
+
     <!--NAV BAR -->
     <header class="main-header">
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container-fluid position-relative">
+
                 <!-- Offcanvas Toggler -->
                 <button class="navbar-toggler d-lg-none position-absolute top-50 start-0 translate-middle-y ms-2"
                     type="button" data-bs-toggle="offcanvas" data-bs-target="#mainNavDrawer"
                     aria-controls="mainNavDrawer" aria-label="Toggle navigation">
                     <i class="bi bi-list fs-2"></i>
                 </button>
-                <a class="navbar-brand d-none d-lg-block" href="homepage.html#home">TEA-Napay</a>
-                <a class="navbar-brand d-none d-md-block d-lg-none mx-auto" href="homepage.html#home">TEA-Napay</a>
-                <a class="navbar-brand d-block d-md-none ms-5" href="homepage.html#home">TEA-Napay</a>
+                <a class="navbar-brand d-none d-lg-block" href="mainpage.php#home">TEA-Napay</a>
+                <a class="navbar-brand d-none d-md-block d-lg-none mx-auto" href="mainpage.php#home">TEA-Napay</a>
+                <a class="navbar-brand d-block d-md-none ms-5" href="mainpage.php#home">TEA-Napay</a>
                 <div class="navbar-nav icons-nav flex-row align-items-center position-absolute top-50 end-0 translate-middle-y me-2">
-                    <a class="nav-link px-2" href="cart.html" aria-label="View cart"><i class="bi bi-cart4 fs-4"></i></a>
+                    <a class="nav-link px-2" href="mainpage.phpcart.php" aria-label="View cart"><i class="bi bi-cart4 fs-4"></i></a>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle px-2" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-person-circle fs-4"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
                           <li>
-                              <a class="dropdown-item" href="profile.html">
+                              <a class="dropdown-item" href="profile.php">
                                   <i class="bi bi-person-circle me-2"></i> See Profile Information
                               </a>
                             </li>
@@ -54,27 +62,29 @@
                         </ul>
                     </li>
                 </div>
+
                 <!-- Desktop Navbar -->
                 <div class="collapse navbar-collapse d-none d-lg-block" id="mainNav">
                     <div class="navbar-nav-container d-flex justify-content-center w-100">
                         <ul class="navbar-nav">
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#home">HOME</a></li>
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#about">ABOUT</a></li>
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#service">SERVICE</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mainpage.php#home">HOME</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mainpage.php#about">ABOUT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mainpage.php#service">SERVICE</a></li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="homepage.html#menu" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">MENU</a>
+                                <a class="nav-link dropdown-toggle" href="mainpage.php#menu" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">PRODUCTS</a>
                                 <ul class="dropdown-menu" aria-labelledby="menuDropdown">
-                                    <li><a class="dropdown-item" href="#">Donuts</a></li>
-                                    <li><a class="dropdown-item" href="#">Bread</a></li>
-                                    <li><a class="dropdown-item" href="#">Milk Tea</a></li>
-                                    <li><a class="dropdown-item" href="#">Cakes</a></li>
-                                    <li><a class="dropdown-item" href="#">Others</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#bread">Bread</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#doughnut">Donuts</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#cakes">Cakes</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#fruittea">Fruit Tea</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#others">Others</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="#contact">CONTACT</a></li>
                         </ul>
                     </div>
                 </div>
+
                 <!-- Offcanvas Drawer for Mobile/Tablet -->
                 <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mainNavDrawer" aria-labelledby="mainNavDrawerLabel">
                     <div class="offcanvas-header">
@@ -83,17 +93,17 @@
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav flex-column">
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#home" data-bs-dismiss="offcanvas">HOME</a></li>
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#about" data-bs-dismiss="offcanvas">ABOUT</a></li>
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#service" data-bs-dismiss="offcanvas">SERVICE</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mainpage.php#home" data-bs-dismiss="offcanvas">HOME</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mainpage.php#about" data-bs-dismiss="offcanvas">ABOUT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mainpage.php#service" data-bs-dismiss="offcanvas">SERVICE</a></li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="homepage.html#menu" id="menuDropdownDrawer" role="button" data-bs-toggle="dropdown" aria-expanded="false">MENU</a>
+                                <a class="nav-link dropdown-toggle" href="mainpage.php#menu" id="menuDropdownDrawer" role="button" data-bs-toggle="dropdown" aria-expanded="false">PRODUCTS</a>
                                 <ul class="dropdown-menu" aria-labelledby="menuDropdownDrawer">
-                                    <li><a class="dropdown-item" href="#">Donuts</a></li>
-                                    <li><a class="dropdown-item" href="#">Bread</a></li>
-                                    <li><a class="dropdown-item" href="#">Milk Tea</a></li>
-                                    <li><a class="dropdown-item" href="#">Cakes</a></li>
-                                    <li><a class="dropdown-item" href="#">Others</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#bread">Bread</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#donuts">Donuts</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#cakes">Cakes</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#fruittea">Fruit Tea</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#others">Others</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="#contact" data-bs-dismiss="offcanvas">CONTACT</a></li>
@@ -104,41 +114,42 @@
         </nav>
     </header>
 
-    <!-- Login Section -->
-    <section class="login py-5">
+    <!-- Register Section -->
+    <section class="register py-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8 col-lg-6">
-                    <div class="login-card bg-white rounded shadow">
+                    <div class="register-card bg-white rounded shadow">
                         <div class="row g-0">
                             <div class="col-12 col-md-6 gradient-bg d-flex align-items-center justify-content-center">
                                 <div class="text-center p-4">
                                     <i class="bi bi-cake2 fs-1 text-white mb-3"></i>
-                                    <h2 class="text-white">Welcome Back!</h2>
-                                    <p class="opacity-75">Login to enjoy your favorite treats!</p>
+                                    <h2 class="text-white">Join Us!</h2>
+                                    <p class="opacity-75">Create your account and start ordering!</p>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 p-4">
-                                <h3 class="mb-3">Login</h3>
-                                <p class="text-muted mb-4">Please login to your account.</p>
-                                <form id="login-form">
+                                <h3 class="mb-3">Register</h3>
+                                <p class="text-muted mb-4">Please fill in the details below.</p>
+                                <form id="register-form">
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">Email *</label>
-                                        <input type="email" class="form-control" id="email" placeholder="username@gmail.com" required aria-label="Your email">
+                                        <label for="regName" class="form-label">Full Name *</label>
+                                        <input type="text" class="form-control" id="regName" placeholder="Your Name" required aria-label="Your name">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="password" class="form-label">Password *</label>
-                                        <input type="password" class="form-control" id="password" placeholder="••••••••" required aria-label="Your password">
+                                        <label for="regEmail" class="form-label">Email *</label>
+                                        <input type="email" class="form-control" id="regEmail" placeholder="username@gmail.com" required aria-label="Your email">
                                     </div>
-                                    <div class="d-flex justify-content-between align-items-center mb-4">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="rememberMe">
-                                            <label class="form-check-label" for="rememberMe">Remember Me</label>
-                                        </div>
-                                        <a href="#" class="text-muted small" id="forgot-password">Forgot Password?</a>
+                                    <div class="mb-3">
+                                        <label for="regPassword" class="form-label">Password *</label>
+                                        <input type="password" class="form-control" id="regPassword" placeholder="••••••••" required aria-label="Your password">
                                     </div>
-                                    <button type="submit" class="btn btn-custom w-100">Login</button>
-                                    <p class="p1 text-center mt-3 small">New User? <a href="register.html">Signup</a></p>
+                                    <div class="mb-3">
+                                        <label for="regConfirm" class="form-label">Confirm Password *</label>
+                                        <input type="password" class="form-control" id="regConfirm" placeholder="••••••••" required aria-label="Confirm password">
+                                    </div>
+                                    <button type="submit" class="btn btn-custom w-100">Register</button>
+                                    <p class="p1 text-center mt-3 small">Already have an account? <a href="index.php">Login</a></p>
                                 </form>
                             </div>
                         </div>
@@ -154,10 +165,10 @@
             <div class="row g-4">
                 <div class="col-12 col-md-1 text-md-start">
                     <ul class="nav justify-content-center flex-row flex-md-column">
-                        <li class="nav-item mx-2"><a class="nav-link" href="homepage.html#home">HOME</a></li>
-                        <li class="nav-item mx-2"><a class="nav-link" href="homepage.html#about">ABOUT</a></li>
-                        <li class="nav-item mx-2"><a class="nav-link" href="homepage.html#service">SERVICE</a></li>
-                        <li class="nav-item mx-2"><a class="nav-link" href="homepage.html#menu">MENU</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="#home">HOME</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="#about">ABOUT</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="#service">SERVICE</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="#menu">MENU</a></li>
                     </ul>
                 </div>
                 <div class="col-12 col-md-5 text-center">
@@ -191,6 +202,8 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script>
+        
+    </script>
 </body>
 </html>
