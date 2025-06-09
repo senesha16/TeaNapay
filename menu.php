@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,54 +15,77 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="style.css">
+    <style>
+        
+    </style>
 </head>
 <body>
+  <div id="menuPage">
     <!-- NAV BAR -->
     <header class="main-header">
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container-fluid position-relative">
+                <!-- Offcanvas Toggler -->
                 <button class="navbar-toggler d-lg-none position-absolute top-50 start-0 translate-middle-y ms-2"
                     type="button" data-bs-toggle="offcanvas" data-bs-target="#mainNavDrawer"
                     aria-controls="mainNavDrawer" aria-label="Toggle navigation">
                     <i class="bi bi-list fs-2"></i>
                 </button>
-                <a class="navbar-brand d-none d-lg-block" href="homepage.html#home">TEA-Napay</a>
-                <a class="navbar-brand d-none d-md-block d-lg-none mx-auto" href="homepage.html#home">TEA-Napay</a>
-                <a class="navbar-brand d-block d-md-none ms-5" href="homepage.html#home">TEA-Napay</a>
+                <a class="navbar-brand d-none d-lg-block" href="mainpage.php#home">TEA-Napay</a>
+                <a class="navbar-brand d-none d-md-block d-lg-none mx-auto" href="mainpage.php#home">TEA-Napay</a>
+                <a class="navbar-brand d-block d-md-none ms-5" href="mainpage.php#home">TEA-Napay</a>
                 <div class="navbar-nav icons-nav flex-row align-items-center position-absolute top-50 end-0 translate-middle-y me-2">
-                    <a class="nav-link px-2" href="cart.html" aria-label="View cart"><i class="bi bi-cart4 fs-4"></i></a>
+                    <a class="nav-link px-2" href="mainpage.phpcart.php" aria-label="View cart"><i class="bi bi-cart4 fs-4"></i></a>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle px-2" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-person-circle fs-4"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                            <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person-circle me-2"></i> See Profile Information</a></li>
-                            <li><button class="dropdown-item" onclick="updatePersonalInfo()"><i class="bi bi-pencil-square me-2"></i> Update Personal Information</button></li>
-                            <li><button class="dropdown-item" onclick="updatePassword()"><i class="bi bi-key me-2"></i> Update Password</button></li>
-                            <li><button class="dropdown-item text-danger" onclick="logout()"><i class="bi bi-box-arrow-right me-2"></i> Logout</button></li>
+                          <li>
+                              <a class="dropdown-item" href="profile.php">
+                                  <i class="bi bi-person-circle me-2"></i> See Profile Information
+                              </a>
+                            </li>
+                          <li>
+                            <button class="dropdown-item" onclick="updatePersonalInfo()">
+                              <i class="bi bi-pencil-square me-2"></i> Update Personal Information
+                            </button>
+                          </li>
+                          <li>
+                            <button class="dropdown-item" onclick="updatePassword()">
+                              <i class="bi bi-key me-2"></i> Update Password
+                            </button>
+                          </li>
+                          <li>
+                            <button class="dropdown-item text-danger" onclick="logout()">
+                              <i class="bi bi-box-arrow-right me-2"></i> Logout
+                            </button>
+                          </li>
                         </ul>
                     </li>
                 </div>
+                <!-- Desktop Navbar -->
                 <div class="collapse navbar-collapse d-none d-lg-block" id="mainNav">
                     <div class="navbar-nav-container d-flex justify-content-center w-100">
                         <ul class="navbar-nav">
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#home">HOME</a></li>
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#about">ABOUT</a></li>
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#service">SERVICE</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mainpage.php#home">HOME</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mainpage.php#about">ABOUT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mainpage.php#service">SERVICE</a></li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="homepage.html#menu" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">MENU</a>
+                                <a class="nav-link dropdown-toggle" href="mainpage.php#menu" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">PRODUCTS</a>
                                 <ul class="dropdown-menu" aria-labelledby="menuDropdown">
-                                    <li><a class="dropdown-item" href="#">Donuts</a></li>
-                                    <li><a class="dropdown-item" href="#">Bread</a></li>
-                                    <li><a class="dropdown-item" href="#">Milk Tea</a></li>
-                                    <li><a class="dropdown-item" href="#">Cakes</a></li>
-                                    <li><a class="dropdown-item" href="#">Others</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#bread">Bread</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#doughnut">Donuts</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#cakes">Cakes</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#fruittea">Fruit Tea</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#others">Others</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="#contact">CONTACT</a></li>
                         </ul>
                     </div>
                 </div>
+                <!-- Offcanvas Drawer for Mobile/Tablet -->
                 <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mainNavDrawer" aria-labelledby="mainNavDrawerLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="mainNavDrawerLabel">TEA-Napay</h5>
@@ -64,17 +93,17 @@
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav flex-column">
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#home" data-bs-dismiss="offcanvas">HOME</a></li>
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#about" data-bs-dismiss="offcanvas">ABOUT</a></li>
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#service" data-bs-dismiss="offcanvas">SERVICE</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mainpage.php#home" data-bs-dismiss="offcanvas">HOME</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mainpage.php#about" data-bs-dismiss="offcanvas">ABOUT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mainpage.php#service" data-bs-dismiss="offcanvas">SERVICE</a></li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="homepage.html#menu" id="menuDropdownDrawer" role="button" data-bs-toggle="dropdown" aria-expanded="false">MENU</a>
+                                <a class="nav-link dropdown-toggle" href="mainpage.php#menu" id="menuDropdownDrawer" role="button" data-bs-toggle="dropdown" aria-expanded="false">PRODUCTS</a>
                                 <ul class="dropdown-menu" aria-labelledby="menuDropdownDrawer">
-                                    <li><a class="dropdown-item" href="#">Donuts</a></li>
-                                    <li><a class="dropdown-item" href="#">Bread</a></li>
-                                    <li><a class="dropdown-item" href="#">Milk Tea</a></li>
-                                    <li><a class="dropdown-item" href="#">Cakes</a></li>
-                                    <li><a class="dropdown-item" href="#">Others</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#bread">Bread</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#donuts">Donuts</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#cakes">Cakes</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#fruittea">Fruit Tea</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#others">Others</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="#contact" data-bs-dismiss="offcanvas">CONTACT</a></li>
@@ -92,7 +121,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-4 mb-4">
                         <div class="filter-section shadow-sm rounded p-4">
-                            <h4 class="mb-3">Filter Products</h4>
+                            <h4 class="mb-3 text-center">Filter Products</h4>
                             <div class="category-filter mb-3">
                                 <label for="categorySelect" class="form-label">Category</label>
                                 <select id="categorySelect" class="form-select">
@@ -100,28 +129,30 @@
                                     <option value="Bread">Bread</option>
                                     <option value="Doughnut">Doughnuts</option>
                                     <option value="Cakes">Cakes</option>
-                                    <option value="Drinks">Drinks</option>
+                                    <option value="Fruit Tea">Fruit Tea</option>
                                     <option value="Others">Others</option>
                                 </select>
                             </div>
                             <div class="price-range mb-3">
-                                <label class="form-label">Price Range: ₱<span id="minPrice">0</span> - ₱<span id="maxPrice">1500</span></label>
+                                <label class="form-label" for="priceSlider">
+                                    Price Range: ₱<span id="minPrice">0</span> - ₱<span id="maxPrice">1500</span>
+                                </label>
                                 <input type="range" class="form-range" id="priceSlider" min="0" max="1500" value="1500">
                             </div>
                             <div class="availability-filter">
                                 <input type="checkbox" class="form-check-input" id="availableOnly" checked>
-                                <label class="form-check-label" for="availableOnly">Show Available Products Only</label>
+                                <label class="form-check-label" for="availableOnly" style="color: var(--primary-color);">Show Available Products Only</label>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-8">
                         <div class="row justify-content-center">
-                            <div class="col-12 menu-section" data-category="Bread">
+                            <section id="bread" class="col-12 menu-section" data-category="Bread">
                                 <h2 class="text-center mb-4">Bread</h2>
                                 <div class="row">
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="150" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="150" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/loaf.png" class="card-img-top mx-auto mt-3" alt="Cheese Loaf">
+                                            <img src="./img/loaf.png" class="card-img-top" alt="Cheese Loaf">
                                             <div class="card-body">
                                                 <h5 class="card-title">Cheese Loaf</h5>
                                                 <p class="card-text">A cheese loaf is processed cheese shaped into a rectangular block for easy slicing, made by blending cheese with salt or emulsifiers for a smooth texture.</p>
@@ -130,9 +161,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="140" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="140" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/raisin.png" class="card-img-top mx-auto mt-3" alt="Raisin Loaf">
+                                            <img src="./img/raisin.png" class="card-img-top" alt="Raisin Loaf">
                                             <div class="card-body">
                                                 <h5 class="card-title">Raisin Loaf</h5>
                                                 <p class="card-text">A sweet or savory bread baked with raisins or other dried fruits mixed into the dough, often enriched with cinnamon or nutmeg.</p>
@@ -141,9 +172,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="160" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="160" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/almond.png" class="card-img-top mx-auto mt-3" alt="Almond Bread">
+                                            <img src="./img/almond.png" class="card-img-top" alt="Almond Bread">
                                             <div class="card-body">
                                                 <h5 class="card-title">Almond Bread</h5>
                                                 <p class="card-text">Made with almond flour and whole almonds, often resulting in a dense, nutty texture. Our bread can be sweet and savory.</p>
@@ -152,9 +183,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="130" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="130" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/porkfloss.png" class="card-img-top mx-auto mt-3" alt="Pork Floss">
+                                            <img src="./img/porkfloss.png" class="card-img-top" alt="Pork Floss">
                                             <div class="card-body">
                                                 <h5 class="card-title">Pork Floss</h5>
                                                 <p class="card-text">Dried, shredded pork with a cotton candy-like texture. Made by simmering pork in soy sauce and spices, then shredded and dry-fried until crisp.</p>
@@ -163,9 +194,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="80" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="80" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/ensaymada.png" class="card-img-top mx-auto mt-3" alt="Ensaymada">
+                                            <img src="./img/ensaymada.png" class="card-img-top" alt="Ensaymada">
                                             <div class="card-body">
                                                 <h5 class="card-title">Ensaymada</h5>
                                                 <p class="card-text">A Filipino brioche-like bun topped with buttercream and cheese. Perfect for breakfast or snacks, often paired with coffee or tea.</p>
@@ -174,9 +205,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="100" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="100" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/garlicbread.png" class="card-img-top mx-auto mt-3" alt="Garlic Bread">
+                                            <img src="./img/garlicbread.png" class="card-img-top" alt="Garlic Bread">
                                             <div class="card-body">
                                                 <h5 class="card-title">Garlic Bread</h5>
                                                 <p class="card-text">Our bread slathered with garlic butter and herbs, then baked or toasted. Aromatic and savory, great as a side or snack.</p>
@@ -185,9 +216,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="120" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="120" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/hamcheese.png" class="card-img-top mx-auto mt-3" alt="Ham & Cheese Boat">
+                                            <img src="./img/hamcheese.png" class="card-img-top" alt="Ham & Cheese Boat">
                                             <div class="card-body">
                                                 <h5 class="card-title">Ham & Cheese Boat</h5>
                                                 <p class="card-text">Boat-shaped bread filled with savory ham and melted cheese, often topped with herbs or sauce.</p>
@@ -196,9 +227,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="110" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="110" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/pizzasausage.png" class="card-img-top mx-auto mt-3" alt="Pizza Sausage">
+                                            <img src="./img/pizzasausage.png" class="card-img-top" alt="Pizza Sausage">
                                             <div class="card-body">
                                                 <h5 class="card-title">Pizza Sausage</h5>
                                                 <p class="card-text">Bread or rolls filled or topped with sausage, tomato sauce, cheese, and herbs. A mini pizza experience.</p>
@@ -207,9 +238,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="130" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="130" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/springroll.png" class="card-img-top mx-auto mt-3" alt="Spring Roll Floss Overload">
+                                            <img src="./img/springroll.png" class="card-img-top" alt="Spring Roll Floss Overload">
                                             <div class="card-body">
                                                 <h5 class="card-title">Spring Roll Floss Overload</h5>
                                                 <p class="card-text">Crispy spring roll filled or topped with pork or chicken floss, often with mayo or sesame seeds. Crunchy and umami-rich.</p>
@@ -218,9 +249,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="140" data-available="true">
-                                        <div class="card h-100 text center shadow-sm">
-                                            <img src="./img/soboro.png" class="card-img-top mx-auto mt-3" alt="Soboro Peanut Bread">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="140" data-available="true">
+                                        <div class="card h-100 text-center shadow-sm">
+                                            <img src="./img/soboro.png" class="card-img-top" alt="Soboro Peanut Bread">
                                             <div class="card-body">
                                                 <h5 class="card-title">Soboro Peanut Bread</h5>
                                                 <p class="card-text">Korean sweet bun topped with crunchy peanut streusel, sometimes filled with red bean. Soft and nutty.</p>
@@ -229,9 +260,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="90" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="90" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/coffeebun.png" class="card-img-top mx-auto mt-3" alt="Coffee Bun">
+                                            <img src="./img/coffeebun.png" class="card-img-top" alt="Coffee Bun">
                                             <div class="card-body">
                                                 <h5 class="card-title">Coffee Bun</h5>
                                                 <p class="card-text">Soft, fluffy bun with a coffee-flavored crust, sometimes filled with butter or cream. Perfect for coffee lovers.</p>
@@ -240,9 +271,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Bread" data-price="150" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="150" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/garliccreamcheese.png" class="card-img-top mx-auto mt-3" alt="Korean Garlic Cream Cheese">
+                                            <img src="./img/garliccreamcheese.png" class="card-img-top" alt="Korean Garlic Cream Cheese">
                                             <div class="card-body">
                                                 <h5 class="card-title">Korean Garlic Cream Cheese</h5>
                                                 <p class="card-text">Sweet bun filled with cream cheese and dipped in garlic butter custard. A viral Korean street food snack.</p>
@@ -252,14 +283,14 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </section>
 
-                            <div class="col-12 menu-section" data-category="Doughnut">
+                            <section id="doughnut" class="col-12 menu-section" data-category="Doughnut">
                                 <h2 class="text-center mb-4">Doughnuts</h2>
                                 <div class="row">
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Doughnut" data-price="60" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Doughnut" data-price="60" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/berrydonut.png" class="card-img-top mx-auto mt-3" alt="Strawberry Sprinkle Donut">
+                                            <img src="./img/berrydonut.png" class="card-img-top" alt="Strawberry Sprinkle Donut">
                                             <div class="card-body">
                                                 <h5 class="card-title">Strawberry Sprinkle Donut</h5>
                                                 <p class="card-text">A delightful yeast donut glazed with vibrant strawberry icing and topped with colorful sprinkles, offering a sweet and playful burst of flavor in every bite.</p>
@@ -268,9 +299,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Doughnut" data-price="55" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Doughnut" data-price="55" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/chocodonut.png" class="card-img-top mx-auto mt-3" alt="Chocolate Donut">
+                                            <img src="./img/chocodonut.png" class="card-img-top" alt="Chocolate Donut">
                                             <div class="card-body">
                                                 <h5 class="card-title">Chocolate Donut</h5>
                                                 <p class="card-text">A chocolate donut is a sweet, ring-shaped or filled pastry made from dough, typically deep-fried or baked, and coated or infused with chocolate.</p>
@@ -279,9 +310,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Doughnut" data-price="65" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Doughnut" data-price="65" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/peanutdonut.png" class="card-img-top mx-auto mt-3" alt="Chocolate Peanut Donut">
+                                            <img src="./img/peanutdonut.png" class="card-img-top" alt="Chocolate Peanut Donut">
                                             <div class="card-body">
                                                 <h5 class="card-title">Chocolate Peanut Donut</h5>
                                                 <p class="card-text">A chocolate peanut donut featuring a chocolate glaze or filling with peanut flavors like peanut butter or chopped peanuts.</p>
@@ -291,14 +322,14 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </section>
 
-                            <div class="col-12 menu-section" data-category="Cakes">
+                            <section id="cakes" class="col-12 menu-section" data-category="Cakes">
                                 <h2 class="text-center mb-4">Cakes</h2>
                                 <div class="row">
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Cakes" data-price="1200" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Cakes" data-price="1200" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/chocolatemoist.png" class="card-img-top mx-auto mt-3" alt="Chocolate Moist Cake">
+                                            <img src="./img/chocolatemoist.png" class="card-img-top" alt="Chocolate Moist Cake">
                                             <div class="card-body">
                                                 <h5 class="card-title">Chocolate Moist Cake</h5>
                                                 <p class="card-text">A rich, fudgy cake known for its dense, moist texture, often frosted with chocolate ganache or buttercream.</p>
@@ -307,9 +338,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Cakes" data-price="1100" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Cakes" data-price="1100" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/yemacake.png" class="card-img-top mx-auto mt-3" alt="Yema Cake">
+                                            <img src="./img/yemacake.png" class="card-img-top" alt="Yema Cake">
                                             <div class="card-body">
                                                 <h5 class="card-title">Yema Cake</h5>
                                                 <p class="card-text">A Filipino chiffon cake topped or filled with creamy yema custard made from egg yolks and condensed milk.</p>
@@ -318,9 +349,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Cakes" data-price="1000" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Cakes" data-price="1000" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/custardcake.png" class="card-img-top mx-auto mt-3" alt="Custard Cake">
+                                            <img src="./img/custardcake.png" class="card-img-top" alt="Custard Cake">
                                             <div class="card-body">
                                                 <h5 class="card-title">Custard Cake</h5>
                                                 <p class="card-text">A fluffy chiffon base with a smooth, baked custard topping, offering a creamy, delicate flavor.</p>
@@ -329,9 +360,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Cakes" data-price="950" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Cakes" data-price="950" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/chiffoncake.png" class="card-img-top mx-auto mt-3" alt="Chiffon Cake">
+                                            <img src="./img/chiffoncake.png" class="card-img-top" alt="Chiffon Cake">
                                             <div class="card-body">
                                                 <h5 class="card-title">Chiffon Cake</h5>
                                                 <p class="card-text">A light, airy cake made with oil, eggs, and flour. Known for its spongy texture and subtle flavor.</p>
@@ -340,9 +371,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Cakes" data-price="1400" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Cakes" data-price="1400" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/sansrival.png" class="card-img-top mx-auto mt-3" alt="Sansrival Cake">
+                                            <img src="./img/sansrival.png" class="card-img-top" alt="Sansrival Cake">
                                             <div class="card-body">
                                                 <h5 class="card-title">Sansrival Cake</h5>
                                                 <p class="card-text">A layered cake of crispy meringue wafers, buttercream, and cashews. Crunchy and indulgent.</p>
@@ -351,9 +382,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Cakes" data-price="1300" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Cakes" data-price="1300" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/mangocake.png" class="card-img-top mx-auto mt-3" alt="Mango Cake">
+                                            <img src="./img/mangocake.png" class="card-img-top" alt="Mango Cake">
                                             <div class="card-body">
                                                 <h5 class="card-title">Mango Cake</h5>
                                                 <p class="card-text">A chiffon or sponge cake layered with mango slices and puree. Light and refreshing.</p>
@@ -362,9 +393,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Cakes" data-price="1250" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Cakes" data-price="1250" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/mochacake.png" class="card-img-top mx-auto mt-3" alt="Mocha Cake">
+                                            <img src="./img/mochacake.png" class="card-img-top" alt="Mocha Cake">
                                             <div class="card-body">
                                                 <h5 class="card-title">Mocha Cake</h5>
                                                 <p class="card-text">Infused with coffee and chocolate, layered with mocha buttercream. A treat for coffee lovers.</p>
@@ -374,14 +405,14 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </section>
 
-                            <div class="col-12 menu-section" data-category="Drinks">
-                                <h2 class="text-center mb-4">Drinks</h2>
+                            <section id="fruittea" class="col-12 menu-section" data-category="Fruit Tea">
+                                <h2 class="text-center mb-4">Fruit Tea</h2>
                                 <div class="row">
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Drinks" data-price="100" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Fruit Tea" data-price="100" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/bluesoda.png" class="card-img-top mx-auto mt-3" alt="Blueberry Soda">
+                                            <img src="./img/bluesoda.png" class="card-img-top" alt="Blueberry Soda">
                                             <div class="card-body">
                                                 <h5 class="card-title">Blueberry Soda</h5>
                                                 <p class="card-text">A fizzy, refreshing drink with sweet-tart blueberry flavor. Light and fruity.</p>
@@ -404,9 +435,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Drinks" data-price="100" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Fruit Tea" data-price="100" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/strawberrysoda.png" class="card-img-top mx-auto mt-3" alt="Strawberry Soda">
+                                            <img src="./img/strawberrysoda.png" class="card-img-top" alt="Strawberry Soda">
                                             <div class="card-body">
                                                 <h5 class="card-title">Strawberry Soda</h5>
                                                 <p class="card-text">A sparkling drink with juicy strawberry taste. Perfectly refreshing.</p>
@@ -429,9 +460,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Drinks" data-price="100" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Fruit Tea" data-price="100" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/greenapplesoda.png" class="card-img-top mx-auto mt-3" alt="Green Apple Soda">
+                                            <img src="./img/greenapplesoda.png" class="card-img-top" alt="Green Apple Soda">
                                             <div class="card-body">
                                                 <h5 class="card-title">Green Apple Soda</h5>
                                                 <p class="card-text">Crisp and tangy soda bursting with green apple flavor. Zesty and fun.</p>
@@ -455,14 +486,14 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </section>
 
-                            <div class="col-12 menu-section" data-category="Others">
+                            <section id="others" class="col-12 menu-section" data-category="Others">
                                 <h2 class="text-center mb-4">Others</h2>
                                 <div class="row">
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Others" data-price="80" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Others" data-price="80" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/brownies.png" class="card-img-top mx-auto mt-3" alt="Brownies">
+                                            <img src="./img/brownies.png" class="card-img-top" alt="Brownies">
                                             <div class="card-body">
                                                 <h5 class="card-title">Brownies</h5>
                                                 <p class="card-text">Dense, fudgy chocolate squares, often studded with nuts or chocolate chips. Baked to a chewy or cakey texture, they’re a rich, indulgent dessert perfect for snacks or gifting.</p>
@@ -471,9 +502,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 mb-4 product-item animate__animated animate__fadeInUp" data-category="Others" data-price="85" data-available="true">
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Others" data-price="85" data-available="true">
                                         <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/butterscotch.png" class="card-img-top mx-auto mt-3" alt="Butterscotch">
+                                            <img src="./img/butterscotch.png" class="card-img-top" alt="Butterscotch">
                                             <div class="card-body">
                                                 <h5 class="card-title">Butterscotch</h5>
                                                 <p class="card-text">A sweet treat made from brown sugar, butter, and sometimes cream, with a caramel-like, buttery flavor. Often served as bars, squares, or drizzled over desserts.</p>
@@ -483,11 +514,12 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </section>
                         </div>
                     </div>
                 </div>
 
+                <!-- CART NOTIFICATION -->
                 <div class="cart-notification" id="cartNotification" role="alert" aria-live="assertive">
                     <button class="close-btn" onclick="hideCartNotification()">×</button>
                     <p class="status">✓ Item added to your cart</p>
@@ -502,6 +534,7 @@
                     <button class="checkout btn btn-custom">Check Out</button>
                     <a href="#" class="continue-shopping">Continue Shopping</a>
                 </div>
+
             </section>
         </div>
     </main>
@@ -511,10 +544,10 @@
             <div class="row g-4">
                 <div class="col-12 col-md-1 text-md-start">
                     <ul class="nav justify-content-center flex-row flex-md-column">
-                        <li class="nav-item mx-2"><a class="nav-link" href="homepage.html#home">HOME</a></li>
-                        <li class="nav-item mx-2"><a class="nav-link" href="homepage.html#about">ABOUT</a></li>
-                        <li class="nav-item mx-2"><a class="nav-link" href="homepage.html#service">SERVICE</a></li>
-                        <li class="nav-item mx-2"><a class="nav-link" href="homepage.html#menu">MENU</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="mainpage.php#home">HOME</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="mainpage.php#about">ABOUT</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="mainpage.php#service">SERVICE</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="mainpage.php#menu">MENU</a></li>
                     </ul>
                 </div>
                 <div class="col-12 col-md-5 text-center">
@@ -550,5 +583,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     <script src="script.js"></script>
+  </div>
 </body>
 </html>

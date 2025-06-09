@@ -21,18 +21,18 @@
                     aria-controls="mainNavDrawer" aria-label="Toggle navigation">
                     <i class="bi bi-list fs-2"></i>
                 </button>
-                <a class="navbar-brand d-none d-lg-block" href="homepage.html#home">TEA-Napay</a>
-                <a class="navbar-brand d-none d-md-block d-lg-none mx-auto" href="homepage.html#home">TEA-Napay</a>
-                <a class="navbar-brand d-block d-md-none ms-5" href="homepage.html#home">TEA-Napay</a>
+                <a class="navbar-brand d-none d-lg-block" href="mainpage.php#home">TEA-Napay</a>
+                <a class="navbar-brand d-none d-md-block d-lg-none mx-auto" href="mainpage.php#home">TEA-Napay</a>
+                <a class="navbar-brand d-block d-md-none ms-5" href="mainpage.php#home">TEA-Napay</a>
                 <div class="navbar-nav icons-nav flex-row align-items-center position-absolute top-50 end-0 translate-middle-y me-2">
-                    <a class="nav-link px-2" href="cart.html" aria-label="View cart"><i class="bi bi-cart4 fs-4"></i></a>
+                    <a class="nav-link px-2" href="mainpage.phpcart.php" aria-label="View cart"><i class="bi bi-cart4 fs-4"></i></a>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle px-2" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-person-circle fs-4"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
                           <li>
-                              <a class="dropdown-item" href="profile.html">
+                              <a class="dropdown-item" href="profile.php">
                                   <i class="bi bi-person-circle me-2"></i> See Profile Information
                               </a>
                             </li>
@@ -58,17 +58,17 @@
                 <div class="collapse navbar-collapse d-none d-lg-block" id="mainNav">
                     <div class="navbar-nav-container d-flex justify-content-center w-100">
                         <ul class="navbar-nav">
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#home">HOME</a></li>
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#about">ABOUT</a></li>
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#service">SERVICE</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mainpage.php#home">HOME</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mainpage.php#about">ABOUT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mainpage.php#service">SERVICE</a></li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="homepage.html#menu" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">MENU</a>
+                                <a class="nav-link dropdown-toggle" href="mainpage.php#menu" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">PRODUCTS</a>
                                 <ul class="dropdown-menu" aria-labelledby="menuDropdown">
-                                    <li><a class="dropdown-item" href="#">Donuts</a></li>
-                                    <li><a class="dropdown-item" href="#">Bread</a></li>
-                                    <li><a class="dropdown-item" href="#">Milk Tea</a></li>
-                                    <li><a class="dropdown-item" href="#">Cakes</a></li>
-                                    <li><a class="dropdown-item" href="#">Others</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#bread">Bread</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#doughnut">Donuts</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#cakes">Cakes</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#fruittea">Fruit Tea</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#others">Others</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="#contact">CONTACT</a></li>
@@ -83,17 +83,17 @@
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav flex-column">
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#home" data-bs-dismiss="offcanvas">HOME</a></li>
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#about" data-bs-dismiss="offcanvas">ABOUT</a></li>
-                            <li class="nav-item"><a class="nav-link" href="homepage.html#service" data-bs-dismiss="offcanvas">SERVICE</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mainpage.php#home" data-bs-dismiss="offcanvas">HOME</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mainpage.php#about" data-bs-dismiss="offcanvas">ABOUT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mainpage.php#service" data-bs-dismiss="offcanvas">SERVICE</a></li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="homepage.html#menu" id="menuDropdownDrawer" role="button" data-bs-toggle="dropdown" aria-expanded="false">MENU</a>
+                                <a class="nav-link dropdown-toggle" href="mainpage.php#menu" id="menuDropdownDrawer" role="button" data-bs-toggle="dropdown" aria-expanded="false">PRODUCTS</a>
                                 <ul class="dropdown-menu" aria-labelledby="menuDropdownDrawer">
-                                    <li><a class="dropdown-item" href="#">Donuts</a></li>
-                                    <li><a class="dropdown-item" href="#">Bread</a></li>
-                                    <li><a class="dropdown-item" href="#">Milk Tea</a></li>
-                                    <li><a class="dropdown-item" href="#">Cakes</a></li>
-                                    <li><a class="dropdown-item" href="#">Others</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#bread">Bread</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#donuts">Donuts</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#cakes">Cakes</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#fruittea">Fruit Tea</a></li>
+                                    <li><a class="dropdown-item" href="menu.php#others">Others</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="#contact" data-bs-dismiss="offcanvas">CONTACT</a></li>
@@ -205,10 +205,10 @@
             <div class="row g-4">
                 <div class="col-12 col-md-1 text-md-start">
                     <ul class="nav justify-content-center flex-row flex-md-column">
-                        <li class="nav-item mx-2"><a class="nav-link" href="homepage.html#home">HOME</a></li>
-                        <li class="nav-item mx-2"><a class="nav-link" href="homepage.html#about">ABOUT</a></li>
-                        <li class="nav-item mx-2"><a class="nav-link" href="homepage.html#service">SERVICE</a></li>
-                        <li class="nav-item mx-2"><a class="nav-link" href="homepage.html#menu">MENU</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="mainpage.php#home">HOME</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="mainpage.php#about">ABOUT</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="mainpage.php#service">SERVICE</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="mainpage.php#menu">MENU</a></li>
                     </ul>
                 </div>
                 <div class="col-12 col-md-5 text-center">
