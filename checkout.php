@@ -194,7 +194,7 @@
                 </div>
             </div>
             <div class="text-center mt-4">
-                <a href="cart.html" class="btn btn-outline-danger btn-lg rounded-pill px-4">Back to Cart</a>
+                <a href="cart.php" class="btn btn-outline-danger btn-lg rounded-pill px-4">Back to Cart</a>
             </div>
         </div>
     </section>

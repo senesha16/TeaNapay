@@ -25,7 +25,7 @@
                 <a class="navbar-brand d-none d-md-block d-lg-none mx-auto" href="mainpage.php#home">TEA-Napay</a>
                 <a class="navbar-brand d-block d-md-none ms-5" href="mainpage.php#home">TEA-Napay</a>
                 <div class="navbar-nav icons-nav flex-row align-items-center position-absolute top-50 end-0 translate-middle-y me-2">
-                    <a class="nav-link px-2" href="mainpage.phpcart.html" aria-label="View cart"><i class="bi bi-cart4 fs-4"></i></a>
+                    <a class="nav-link px-2" href="mainpage.phpcart.php" aria-label="View cart"><i class="bi bi-cart4 fs-4"></i></a>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle px-2" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-person-circle fs-4"></i>

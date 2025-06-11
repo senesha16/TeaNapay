@@ -1,6 +1,8 @@
 <?php
 
 session_start();
+require_once('classes/database.php');
+$con = new database();
 
 ?>
 
@@ -23,95 +25,7 @@ session_start();
   <div id="menuPage">
     <!-- NAV BAR -->
     <header class="main-header">
-        <nav class="navbar navbar-expand-lg fixed-top">
-            <div class="container-fluid position-relative">
-                <!-- Offcanvas Toggler -->
-                <button class="navbar-toggler d-lg-none position-absolute top-50 start-0 translate-middle-y ms-2"
-                    type="button" data-bs-toggle="offcanvas" data-bs-target="#mainNavDrawer"
-                    aria-controls="mainNavDrawer" aria-label="Toggle navigation">
-                    <i class="bi bi-list fs-2"></i>
-                </button>
-                <a class="navbar-brand d-none d-lg-block" href="mainpage.php#home">TEA-Napay</a>
-                <a class="navbar-brand d-none d-md-block d-lg-none mx-auto" href="mainpage.php#home">TEA-Napay</a>
-                <a class="navbar-brand d-block d-md-none ms-5" href="mainpage.php#home">TEA-Napay</a>
-                <div class="navbar-nav icons-nav flex-row align-items-center position-absolute top-50 end-0 translate-middle-y me-2">
-                    <a class="nav-link px-2" href="mainpage.phpcart.php" aria-label="View cart"><i class="bi bi-cart4 fs-4"></i></a>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle px-2" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-person-circle fs-4"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                          <li>
-                              <a class="dropdown-item" href="profile.php">
-                                  <i class="bi bi-person-circle me-2"></i> See Profile Information
-                              </a>
-                            </li>
-                          <li>
-                            <button class="dropdown-item" onclick="updatePersonalInfo()">
-                              <i class="bi bi-pencil-square me-2"></i> Update Personal Information
-                            </button>
-                          </li>
-                          <li>
-                            <button class="dropdown-item" onclick="updatePassword()">
-                              <i class="bi bi-key me-2"></i> Update Password
-                            </button>
-                          </li>
-                          <li>
-                            <button class="dropdown-item text-danger" onclick="logout()">
-                              <i class="bi bi-box-arrow-right me-2"></i> Logout
-                            </button>
-                          </li>
-                        </ul>
-                    </li>
-                </div>
-                <!-- Desktop Navbar -->
-                <div class="collapse navbar-collapse d-none d-lg-block" id="mainNav">
-                    <div class="navbar-nav-container d-flex justify-content-center w-100">
-                        <ul class="navbar-nav">
-                            <li class="nav-item"><a class="nav-link" href="mainpage.php#home">HOME</a></li>
-                            <li class="nav-item"><a class="nav-link" href="mainpage.php#about">ABOUT</a></li>
-                            <li class="nav-item"><a class="nav-link" href="mainpage.php#service">SERVICE</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="mainpage.php#menu" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">PRODUCTS</a>
-                                <ul class="dropdown-menu" aria-labelledby="menuDropdown">
-                                    <li><a class="dropdown-item" href="menu.php#bread">Bread</a></li>
-                                    <li><a class="dropdown-item" href="menu.php#doughnut">Donuts</a></li>
-                                    <li><a class="dropdown-item" href="menu.php#cakes">Cakes</a></li>
-                                    <li><a class="dropdown-item" href="menu.php#fruittea">Fruit Tea</a></li>
-                                    <li><a class="dropdown-item" href="menu.php#others">Others</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="#contact">CONTACT</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Offcanvas Drawer for Mobile/Tablet -->
-                <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mainNavDrawer" aria-labelledby="mainNavDrawerLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="mainNavDrawerLabel">TEA-Napay</h5>
-                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <ul class="navbar-nav flex-column">
-                            <li class="nav-item"><a class="nav-link" href="mainpage.php#home" data-bs-dismiss="offcanvas">HOME</a></li>
-                            <li class="nav-item"><a class="nav-link" href="mainpage.php#about" data-bs-dismiss="offcanvas">ABOUT</a></li>
-                            <li class="nav-item"><a class="nav-link" href="mainpage.php#service" data-bs-dismiss="offcanvas">SERVICE</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="mainpage.php#menu" id="menuDropdownDrawer" role="button" data-bs-toggle="dropdown" aria-expanded="false">PRODUCTS</a>
-                                <ul class="dropdown-menu" aria-labelledby="menuDropdownDrawer">
-                                    <li><a class="dropdown-item" href="menu.php#bread">Bread</a></li>
-                                    <li><a class="dropdown-item" href="menu.php#donuts">Donuts</a></li>
-                                    <li><a class="dropdown-item" href="menu.php#cakes">Cakes</a></li>
-                                    <li><a class="dropdown-item" href="menu.php#fruittea">Fruit Tea</a></li>
-                                    <li><a class="dropdown-item" href="menu.php#others">Others</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="#contact" data-bs-dismiss="offcanvas">CONTACT</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
+        <!-- ...existing code... -->
     </header>
 
     <main>
@@ -120,14 +34,14 @@ session_start();
                 <h2 class="text-center menu-title animate__animated animate__fadeIn">Our Menu</h2>
                 <div class="row">
                     <div class="col-lg-3 col-md-4 mb-4">
-                        <div class="filter-section shadow-sm rounded p-4">
+                        <div class="filter-section shadow-sm rounded-4 p-4">
                             <h4 class="mb-3 text-center">Filter Products</h4>
                             <div class="category-filter mb-3">
                                 <label for="categorySelect" class="form-label">Category</label>
                                 <select id="categorySelect" class="form-select">
                                     <option value="all" selected>All</option>
                                     <option value="Bread">Bread</option>
-                                    <option value="Doughnut">Doughnuts</option>
+                                    <option value="Doughnut">Doughnut</option>
                                     <option value="Cakes">Cakes</option>
                                     <option value="Fruit Tea">Fruit Tea</option>
                                     <option value="Others">Others</option>
@@ -147,374 +61,175 @@ session_start();
                     </div>
                     <div class="col-lg-9 col-md-8">
                         <div class="row justify-content-center">
-                            <section id="bread" class="col-12 menu-section" data-category="Bread">
-                                <h2 class="text-center mb-4">Bread</h2>
-                                <div class="row">
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="150" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/loaf.png" class="card-img-top" alt="Cheese Loaf">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Cheese Loaf</h5>
-                                                <p class="card-text">A cheese loaf is processed cheese shaped into a rectangular block for easy slicing, made by blending cheese with salt or emulsifiers for a smooth texture.</p>
-                                                <p class="product-price">₱150.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+
+                            <!-- Breads Section -->
+                            <section id="breads" class="col-12 menu-section rounded-4" data-category="Breads">
+                                <h2 class="text-center mb-4">Breads</h2>
+                                <div class="d-flex flex-wrap align-items-stretch justify-content-center">
+                                <?php
+                                $breads = $con->displayProducts('Breads');
+                                foreach ($breads as $prod) {
+                                    $img = !empty($prod['Prod_Image']) ? $prod['Prod_Image'] : './img/placeholder.png';
+                                    $price = number_format($prod['Price'], 2);
+                                    ?>
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp d-flex align-items-stretch"
+                                         data-category="Breads"
+                                         data-price="<?php echo $prod['Price']; ?>"
+                                         data-available="true">
+                                        <div class="card w-100 d-flex flex-column justify-content-between text-center shadow-sm">
+                                            <img src="<?php echo $img; ?>" class="card-img-top" alt="<?php echo htmlspecialchars($prod['Prod_Name']); ?>">
+                                            <div class="card-body d-flex flex-column justify-content-between">
+                                                <h5 class="card-title"><?php echo htmlspecialchars($prod['Prod_Name']); ?></h5>
+                                                <p class="card-text flex-grow-1"><?php echo htmlspecialchars($prod['Prod_Desc']); ?></p>
+                                                <p class="product-price">₱<?php echo $price; ?> PHP</p>
+                                                <button class="add-to-cart btn btn-custom mt-auto">Add to Cart</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="140" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/raisin.png" class="card-img-top" alt="Raisin Loaf">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Raisin Loaf</h5>
-                                                <p class="card-text">A sweet or savory bread baked with raisins or other dried fruits mixed into the dough, often enriched with cinnamon or nutmeg.</p>
-                                                <p class="product-price">₱140.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="160" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/almond.png" class="card-img-top" alt="Almond Bread">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Almond Bread</h5>
-                                                <p class="card-text">Made with almond flour and whole almonds, often resulting in a dense, nutty texture. Our bread can be sweet and savory.</p>
-                                                <p class="product-price">₱160.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="130" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/porkfloss.png" class="card-img-top" alt="Pork Floss">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Pork Floss</h5>
-                                                <p class="card-text">Dried, shredded pork with a cotton candy-like texture. Made by simmering pork in soy sauce and spices, then shredded and dry-fried until crisp.</p>
-                                                <p class="product-price">₱130.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="80" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/ensaymada.png" class="card-img-top" alt="Ensaymada">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Ensaymada</h5>
-                                                <p class="card-text">A Filipino brioche-like bun topped with buttercream and cheese. Perfect for breakfast or snacks, often paired with coffee or tea.</p>
-                                                <p class="product-price">₱80.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="100" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/garlicbread.png" class="card-img-top" alt="Garlic Bread">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Garlic Bread</h5>
-                                                <p class="card-text">Our bread slathered with garlic butter and herbs, then baked or toasted. Aromatic and savory, great as a side or snack.</p>
-                                                <p class="product-price">₱100.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="120" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/hamcheese.png" class="card-img-top" alt="Ham & Cheese Boat">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Ham & Cheese Boat</h5>
-                                                <p class="card-text">Boat-shaped bread filled with savory ham and melted cheese, often topped with herbs or sauce.</p>
-                                                <p class="product-price">₱120.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="110" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/pizzasausage.png" class="card-img-top" alt="Pizza Sausage">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Pizza Sausage</h5>
-                                                <p class="card-text">Bread or rolls filled or topped with sausage, tomato sauce, cheese, and herbs. A mini pizza experience.</p>
-                                                <p class="product-price">₱110.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="130" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/springroll.png" class="card-img-top" alt="Spring Roll Floss Overload">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Spring Roll Floss Overload</h5>
-                                                <p class="card-text">Crispy spring roll filled or topped with pork or chicken floss, often with mayo or sesame seeds. Crunchy and umami-rich.</p>
-                                                <p class="product-price">₱130.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="140" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/soboro.png" class="card-img-top" alt="Soboro Peanut Bread">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Soboro Peanut Bread</h5>
-                                                <p class="card-text">Korean sweet bun topped with crunchy peanut streusel, sometimes filled with red bean. Soft and nutty.</p>
-                                                <p class="product-price">₱140.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="90" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/coffeebun.png" class="card-img-top" alt="Coffee Bun">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Coffee Bun</h5>
-                                                <p class="card-text">Soft, fluffy bun with a coffee-flavored crust, sometimes filled with butter or cream. Perfect for coffee lovers.</p>
-                                                <p class="product-price">₱90.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Bread" data-price="150" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/garliccreamcheese.png" class="card-img-top" alt="Korean Garlic Cream Cheese">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Korean Garlic Cream Cheese</h5>
-                                                <p class="card-text">Sweet bun filled with cream cheese and dipped in garlic butter custard. A viral Korean street food snack.</p>
-                                                <p class="product-price">₱150.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <?php } ?>
                                 </div>
                             </section>
 
-                            <section id="doughnut" class="col-12 menu-section" data-category="Doughnut">
+                            <!-- Doughnuts Section -->
+                            <section id="doughnuts" class="col-12 menu-section rounded-4" data-category="Doughnuts">
                                 <h2 class="text-center mb-4">Doughnuts</h2>
-                                <div class="row">
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Doughnut" data-price="60" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/berrydonut.png" class="card-img-top" alt="Strawberry Sprinkle Donut">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Strawberry Sprinkle Donut</h5>
-                                                <p class="card-text">A delightful yeast donut glazed with vibrant strawberry icing and topped with colorful sprinkles, offering a sweet and playful burst of flavor in every bite.</p>
-                                                <p class="product-price">₱60.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                <div class="d-flex flex-wrap align-items-stretch justify-content-center">
+                                <?php
+                                $doughnuts = $con->displayProducts('Doughnuts');
+                                foreach ($doughnuts as $prod) {
+                                    $img = !empty($prod['Prod_Image']) ? $prod['Prod_Image'] : './img/placeholder.png';
+                                    $price = number_format($prod['Price'], 2);
+                                    ?>
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp d-flex align-items-stretch"
+                                         data-category="Doughnuts"
+                                         data-price="<?php echo $prod['Price']; ?>"
+                                         data-available="true">
+                                        <div class="card w-100 d-flex flex-column justify-content-between text-center shadow-sm">
+                                            <img src="<?php echo $img; ?>" class="card-img-top" alt="<?php echo htmlspecialchars($prod['Prod_Name']); ?>">
+                                            <div class="card-body d-flex flex-column justify-content-between">
+                                                <h5 class="card-title"><?php echo htmlspecialchars($prod['Prod_Name']); ?></h5>
+                                                <p class="card-text flex-grow-1"><?php echo htmlspecialchars($prod['Prod_Desc']); ?></p>
+                                                <p class="product-price">₱<?php echo $price; ?> PHP</p>
+                                                <button class="add-to-cart btn btn-custom mt-auto">Add to Cart</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Doughnut" data-price="55" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/chocodonut.png" class="card-img-top" alt="Chocolate Donut">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Chocolate Donut</h5>
-                                                <p class="card-text">A chocolate donut is a sweet, ring-shaped or filled pastry made from dough, typically deep-fried or baked, and coated or infused with chocolate.</p>
-                                                <p class="product-price">₱55.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Doughnut" data-price="65" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/peanutdonut.png" class="card-img-top" alt="Chocolate Peanut Donut">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Chocolate Peanut Donut</h5>
-                                                <p class="card-text">A chocolate peanut donut featuring a chocolate glaze or filling with peanut flavors like peanut butter or chopped peanuts.</p>
-                                                <p class="product-price">₱65.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <?php } ?>
                                 </div>
                             </section>
 
-                            <section id="cakes" class="col-12 menu-section" data-category="Cakes">
+                            <!-- Cakes Section -->
+                            <section id="cakes" class="col-12 menu-section rounded-4" data-category="Cakes">
                                 <h2 class="text-center mb-4">Cakes</h2>
-                                <div class="row">
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Cakes" data-price="1200" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/chocolatemoist.png" class="card-img-top" alt="Chocolate Moist Cake">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Chocolate Moist Cake</h5>
-                                                <p class="card-text">A rich, fudgy cake known for its dense, moist texture, often frosted with chocolate ganache or buttercream.</p>
-                                                <p class="product-price">₱1,200.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                <div class="d-flex flex-wrap align-items-stretch justify-content-center">
+                                <?php
+                                $cakes = $con->displayProducts('Cakes');
+                                foreach ($cakes as $prod) {
+                                    $img = !empty($prod['Prod_Image']) ? $prod['Prod_Image'] : './img/placeholder.png';
+                                    $price = number_format($prod['Price'], 2);
+                                    ?>
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp d-flex align-items-stretch"
+                                         data-category="Cakes"
+                                         data-price="<?php echo $prod['Price']; ?>"
+                                         data-available="true">
+                                        <div class="card w-100 d-flex flex-column justify-content-between text-center shadow-sm">
+                                            <img src="<?php echo $img; ?>" class="card-img-top" alt="<?php echo htmlspecialchars($prod['Prod_Name']); ?>">
+                                            <div class="card-body d-flex flex-column justify-content-between">
+                                                <h5 class="card-title"><?php echo htmlspecialchars($prod['Prod_Name']); ?></h5>
+                                                <p class="card-text flex-grow-1"><?php echo htmlspecialchars($prod['Prod_Desc']); ?></p>
+                                                <p class="product-price">₱<?php echo $price; ?> PHP</p>
+                                                <button class="add-to-cart btn btn-custom mt-auto">Add to Cart</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Cakes" data-price="1100" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/yemacake.png" class="card-img-top" alt="Yema Cake">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Yema Cake</h5>
-                                                <p class="card-text">A Filipino chiffon cake topped or filled with creamy yema custard made from egg yolks and condensed milk.</p>
-                                                <p class="product-price">₱1,100.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Cakes" data-price="1000" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/custardcake.png" class="card-img-top" alt="Custard Cake">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Custard Cake</h5>
-                                                <p class="card-text">A fluffy chiffon base with a smooth, baked custard topping, offering a creamy, delicate flavor.</p>
-                                                <p class="product-price">₱1,000.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Cakes" data-price="950" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/chiffoncake.png" class="card-img-top" alt="Chiffon Cake">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Chiffon Cake</h5>
-                                                <p class="card-text">A light, airy cake made with oil, eggs, and flour. Known for its spongy texture and subtle flavor.</p>
-                                                <p class="product-price">₱950.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Cakes" data-price="1400" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/sansrival.png" class="card-img-top" alt="Sansrival Cake">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Sansrival Cake</h5>
-                                                <p class="card-text">A layered cake of crispy meringue wafers, buttercream, and cashews. Crunchy and indulgent.</p>
-                                                <p class="product-price">₱1,400.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Cakes" data-price="1300" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/mangocake.png" class="card-img-top" alt="Mango Cake">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Mango Cake</h5>
-                                                <p class="card-text">A chiffon or sponge cake layered with mango slices and puree. Light and refreshing.</p>
-                                                <p class="product-price">₱1,300.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Cakes" data-price="1250" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/mochacake.png" class="card-img-top" alt="Mocha Cake">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Mocha Cake</h5>
-                                                <p class="card-text">Infused with coffee and chocolate, layered with mocha buttercream. A treat for coffee lovers.</p>
-                                                <p class="product-price">₱1,250.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <?php } ?>
                                 </div>
                             </section>
 
-                            <section id="fruittea" class="col-12 menu-section" data-category="Fruit Tea">
+                            <!-- Fruit Tea Section -->
+                            <section id="fruittea" class="col-12 menu-section rounded-4" data-category="Fruit Tea">
                                 <h2 class="text-center mb-4">Fruit Tea</h2>
-                                <div class="row">
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Fruit Tea" data-price="100" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/bluesoda.png" class="card-img-top" alt="Blueberry Soda">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Blueberry Soda</h5>
-                                                <p class="card-text">A fizzy, refreshing drink with sweet-tart blueberry flavor. Light and fruity.</p>
-                                                <p class="product-price">₱100.00 PHP</p>
-                                                <div class="d-flex justify-content-center gap-3 mb-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="blueberrySize" value="Small" id="smallSizeBlueberry" checked>
-                                                        <label class="form-check-label" for="smallSizeBlueberry">Small</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="blueberrySize" value="Medium" id="mediumSizeBlueberry">
-                                                        <label class="form-check-label" for="mediumSizeBlueberry">Medium</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="blueberrySize" value="Large" id="largeSizeBlueberry">
-                                                        <label class="form-check-label" for="largeSizeBlueberry">Large</label>
-                                                    </div>
-                                                </div>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                                <div class="d-flex flex-wrap align-items-stretch justify-content-center">
+                                <?php
+                                $fruittea = $con->displayProducts('Fruit Tea');
+                                foreach ($fruittea as $prod) {
+                                    $img = !empty($prod['Prod_Image']) ? $prod['Prod_Image'] : './img/placeholder.png';
+                                    $price = number_format($prod['Price'], 2);
+                                    ?>
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp d-flex align-items-stretch"
+                                         data-category="Fruit Tea"
+                                         data-price="<?php echo $prod['Price']; ?>"
+                                         data-available="true">
+                                        <div class="card w-100 d-flex flex-column justify-content-between text-center shadow-sm">
+                                            <img src="<?php echo $img; ?>" class="card-img-top" alt="<?php echo htmlspecialchars($prod['Prod_Name']); ?>">
+                                            <div class="card-body d-flex flex-column justify-content-between">
+                                                <h5 class="card-title"><?php echo htmlspecialchars($prod['Prod_Name']); ?></h5>
+                                                <p class="card-text flex-grow-1"><?php echo htmlspecialchars($prod['Prod_Desc']); ?></p>
+                                                <p class="product-price">₱<?php echo $price; ?> PHP</p>
+                                                <button class="add-to-cart btn btn-custom mt-auto">Add to Cart</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Fruit Tea" data-price="100" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/strawberrysoda.png" class="card-img-top" alt="Strawberry Soda">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Strawberry Soda</h5>
-                                                <p class="card-text">A sparkling drink with juicy strawberry taste. Perfectly refreshing.</p>
-                                                <p class="product-price">₱100.00 PHP</p>
-                                                <div class="d-flex justify-content-center gap-3 mb-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="strawberrySize" value="Small" id="smallSizeStrawberry" checked>
-                                                        <label class="form-check-label" for="smallSizeStrawberry">Small</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="strawberrySize" value="Medium" id="mediumSizeStrawberry">
-                                                        <label class="form-check-label" for="mediumSizeStrawberry">Medium</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="strawberrySize" value="Large" id="largeSizeStrawberry">
-                                                        <label class="form-check-label" for="largeSizeStrawberry">Large</label>
-                                                    </div>
-                                                </div>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Fruit Tea" data-price="100" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/greenapplesoda.png" class="card-img-top" alt="Green Apple Soda">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Green Apple Soda</h5>
-                                                <p class="card-text">Crisp and tangy soda bursting with green apple flavor. Zesty and fun.</p>
-                                                <p class="product-price">₱100.00 PHP</p>
-                                                <div class="d-flex justify-content-center gap-3 mb-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="greenAppleSize" value="Small" id="smallSizeGreenApple" checked>
-                                                        <label class="form-check-label" for="smallSizeGreenApple">Small</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="greenAppleSize" value="Medium" id="mediumSizeGreenApple">
-                                                        <label class="form-check-label" for="mediumSizeGreenApple">Medium</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="greenAppleSize" value="Large" id="largeSizeGreenApple">
-                                                        <label class="form-check-label" for="largeSizeGreenApple">Large</label>
-                                                    </div>
-                                                </div>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <?php } ?>
                                 </div>
                             </section>
 
-                            <section id="others" class="col-12 menu-section" data-category="Others">
-                                <h2 class="text-center mb-4">Others</h2>
-                                <div class="row">
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Others" data-price="80" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/brownies.png" class="card-img-top" alt="Brownies">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Brownies</h5>
-                                                <p class="card-text">Dense, fudgy chocolate squares, often studded with nuts or chocolate chips. Baked to a chewy or cakey texture, they’re a rich, indulgent dessert perfect for snacks or gifting.</p>
-                                                <p class="product-price">₱80.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
+                            <!-- Bites Section -->
+                            <section id="bites" class="col-12 menu-section rounded-4" data-category="Bites">
+                                <h2 class="text-center mb-4">Bites</h2>
+                                <div class="d-flex flex-wrap align-items-stretch justify-content-center">
+                                <?php
+                                $bites = $con->displayProducts('Bites');
+                                foreach ($bites as $prod) {
+                                    $img = !empty($prod['Prod_Image']) ? $prod['Prod_Image'] : './img/placeholder.png';
+                                    $price = number_format($prod['Price'], 2);
+                                    ?>
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp d-flex align-items-stretch"
+                                         data-category="Bites"
+                                         data-price="<?php echo $prod['Price']; ?>"
+                                         data-available="true">
+                                        <div class="card w-100 d-flex flex-column justify-content-between text-center shadow-sm">
+                                            <img src="<?php echo $img; ?>" class="card-img-top" alt="<?php echo htmlspecialchars($prod['Prod_Name']); ?>">
+                                            <div class="card-body d-flex flex-column justify-content-between">
+                                                <h5 class="card-title"><?php echo htmlspecialchars($prod['Prod_Name']); ?></h5>
+                                                <p class="card-text flex-grow-1"><?php echo htmlspecialchars($prod['Prod_Desc']); ?></p>
+                                                <p class="product-price">₱<?php echo $price; ?> PHP</p>
+                                                <button class="add-to-cart btn btn-custom mt-auto">Add to Cart</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp" data-category="Others" data-price="85" data-available="true">
-                                        <div class="card h-100 text-center shadow-sm">
-                                            <img src="./img/butterscotch.png" class="card-img-top" alt="Butterscotch">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Butterscotch</h5>
-                                                <p class="card-text">A sweet treat made from brown sugar, butter, and sometimes cream, with a caramel-like, buttery flavor. Often served as bars, squares, or drizzled over desserts.</p>
-                                                <p class="product-price">₱85.00 PHP</p>
-                                                <button class="add-to-cart btn btn-custom">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <?php } ?>
                                 </div>
                             </section>
+
+                            <!-- Milk Tea Section -->
+                            <section id="milktea" class="col-12 menu-section rounded-4" data-category="Milk Tea">
+                                <h2 class="text-center mb-4">Milk Tea</h2>
+                                <div class="d-flex flex-wrap align-items-stretch justify-content-center">
+                                <?php
+                                $milktea = $con->displayProducts('Milk Tea');
+                                foreach ($milktea as $prod) {
+                                    $img = !empty($prod['Prod_Image']) ? $prod['Prod_Image'] : './img/placeholder.png';
+                                    $price = number_format($prod['Price'], 2);
+                                    ?>
+                                    <div class="product-item col-md-4 col-sm-6 mb-4 animate__animated animate__fadeInUp d-flex align-items-stretch"
+                                         data-category="Milk Tea"
+                                         data-price="<?php echo $prod['Price']; ?>"
+                                         data-available="true">
+                                        <div class="card w-100 d-flex flex-column justify-content-between text-center shadow-sm">
+                                            <img src="<?php echo $img; ?>" class="card-img-top" alt="<?php echo htmlspecialchars($prod['Prod_Name']); ?>">
+                                            <div class="card-body d-flex flex-column justify-content-between">
+                                                <h5 class="card-title"><?php echo htmlspecialchars($prod['Prod_Name']); ?></h5>
+                                                <p class="card-text flex-grow-1"><?php echo htmlspecialchars($prod['Prod_Desc']); ?></p>
+                                                <p class="product-price">₱<?php echo $price; ?> PHP</p>
+                                                <button class="add-to-cart btn btn-custom mt-auto">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                                </div>
+                            </section>
+
                         </div>
                     </div>
                 </div>
@@ -530,7 +245,7 @@ session_start();
                             <span class="product-size">Default</span> - <span class="product-price">₱0.00 PHP</span>
                         </div>
                     </div>
-                    <a href="cart.html" class="view-cart btn btn-custom">View My Cart (0)</a>
+                    <a href="cart.php" class="view-cart btn btn-custom">View My Cart (0)</a>
                     <button class="checkout btn btn-custom">Check Out</button>
                     <a href="#" class="continue-shopping">Continue Shopping</a>
                 </div>
@@ -540,48 +255,11 @@ session_start();
     </main>
 
     <footer class="footer animate__animated animate__fadeIn" id="contact">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-12 col-md-1 text-md-start">
-                    <ul class="nav justify-content-center flex-row flex-md-column">
-                        <li class="nav-item mx-2"><a class="nav-link" href="mainpage.php#home">HOME</a></li>
-                        <li class="nav-item mx-2"><a class="nav-link" href="mainpage.php#about">ABOUT</a></li>
-                        <li class="nav-item mx-2"><a class="nav-link" href="mainpage.php#service">SERVICE</a></li>
-                        <li class="nav-item mx-2"><a class="nav-link" href="mainpage.php#menu">MENU</a></li>
-                    </ul>
-                </div>
-                <div class="col-12 col-md-5 text-center">
-                    <h5 class="footer-heading">Contact Details</h5>
-                    <p class="footer-text">
-                        Customer Hotline: +639687153421<br>
-                        racapacia@yahoo.com
-                    </p>
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/profile.php?id=100067176574296" class="social-icon" aria-label="Visit our Facebook page"><i class="bi bi-facebook"></i></a>
-                        <a href="https://www.facebook.com/messages/t/102498215320537" class="social-icon" aria-label="Visit our Facebook Messenger"><i class="bi bi-messenger"></i></a>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 text-center text-md-start">
-                    <h5 class="footer-heading">Send Us a Message</h5>
-                    <div class="contact-form">
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Name *" required aria-label="Your name">
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Email *" required aria-label="Your email">
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" placeholder="Message *" rows="3" required aria-label="Your message"></textarea>
-                        </div>
-                        <button type="button" class="btn btn-custom rounded-pill px-4">Submit</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- ...existing code... -->
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
   </div>
 </body>

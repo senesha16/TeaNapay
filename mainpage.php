@@ -1,3 +1,35 @@
+<?php
+
+session_start();
+require_once('classes/database.php');
+$con = new database();
+
+function carouselItems($category, $carouselId, $imgPath = './img/') {
+    global $con;
+    $products = $con->displayProducts($category);
+    if (!$products || count($products) === 0) {
+        echo '<div class="carousel-item active"><div class="mt-2">No products available.</div></div>';
+        return;
+    }
+    $active = 'active';
+    foreach ($products as $prod) {
+        $img = htmlspecialchars($imgPath . $prod['Prod_Image']);
+        $name = htmlspecialchars($prod['Prod_Name']);
+        $desc = htmlspecialchars($prod['Prod_Desc']);
+        echo <<<HTML
+        <div class="carousel-item $active">
+            <a href="menu.html#{$category}">
+                <img src="{$img}" alt="{$name}" class="gallery-thumb" title="{$desc}">
+            </a>
+            <div class="mt-2">{$name}</div>
+        </div>
+HTML;
+        $active = '';
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +58,7 @@
                 <a class="navbar-brand d-none d-md-block d-lg-none mx-auto" href="#home">TEA-Napay</a>
                 <a class="navbar-brand d-block d-md-none ms-5" href="#home">TEA-Napay</a>
                 <div class="navbar-nav icons-nav flex-row align-items-center position-absolute top-50 end-0 translate-middle-y me-2">
-                    <a class="nav-link px-2" href="cart.html" aria-label="View cart"><i class="bi bi-cart4 fs-4"></i></a>
+                    <a class="nav-link px-2" href="cart.php" aria-label="View cart"><i class="bi bi-cart4 fs-4"></i></a>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle px-2" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-person-circle fs-4"></i>
@@ -204,79 +236,7 @@ Driven by passion, skill, and a desire to elevate every bite, TEA-Napay is your 
                                 <h4 class="mb-3 text-center" style="color:var(--primary-color);">Bread</h4>
                                 <div id="breadCarousel" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner text-center">
-                                        <!-- Bread Category Carousel Items -->
-                                        <div class="carousel-item active">
-                                          <a href="menu.html#bread">
-                                            <img src="./img/loaf.png" alt="Cheese Loaf" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Cheese Loaf</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#bread">
-                                            <img src="./img/raisin.png" alt="Raisin Loaf" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Raisin Loaf</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#bread">
-                                            <img src="./img/almond.png" alt="Almond Bread" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Almond Bread</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#bread">
-                                            <img src="./img/porkfloss.png" alt="Pork Floss" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Pork Floss</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#bread">
-                                            <img src="./img/ensaymada.png" alt="Ensaymada" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Ensaymada</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#bread">
-                                            <img src="./img/garlicbread.png" alt="Garlic Bread" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Garlic Bread</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#bread">
-                                            <img src="./img/hamcheese.png" alt="Ham & Cheese Boat" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Ham & Cheese Boat</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#bread">
-                                            <img src="./img/pizzasausage.png" alt="Pizza Sausage" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Pizza Sausage</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#bread">
-                                            <img src="./img/springroll.png" alt="Spring Roll Floss Overload" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Spring Roll Floss Overload</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#bread">
-                                            <img src="./img/soboro.png" alt="Soboro Peanut Bread" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Soboro Peanut Bread</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#bread">
-                                            <img src="./img/coffeebun.png" alt="Coffee Bun" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Coffee Bun</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#bread">
-                                            <img src="./img/garliccreamcheese.png" alt="Korean Garlic Cream Cheese" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Korean Garlic Cream Cheese</div>
-                                        </div>
+                                      <?php carouselItems('Breads', 'breadCarousel'); ?>
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#breadCarousel" data-bs-slide="prev">
                                         <span class="carousel-control-prev-icon"></span>
@@ -295,25 +255,7 @@ Driven by passion, skill, and a desire to elevate every bite, TEA-Napay is your 
                                 <h4 class="mb-3 text-center" style="color:var(--primary-color);">Doughnut</h4>
                                 <div id="doughnutCarousel" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner text-center">
-                                        <!-- Doughnut Category Carousel Items -->
-                                        <div class="carousel-item active">
-                                          <a href="menu.html#doughnut">
-                                            <img src="./img/berrydonut.png" alt="Strawberry Sprinkle Donut" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Strawberry Sprinkle Donut</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#doughnut">
-                                            <img src="./img/chocodonut.png" alt="Chocolate Donut" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Chocolate Donut</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#doughnut">
-                                            <img src="./img/peanutdonut.png" alt="Chocolate Peanut Donut" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Chocolate Peanut Donut</div>
-                                        </div>
+                                      <?php carouselItems('Doughnuts', 'doughnutCarousel'); ?>
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#doughnutCarousel" data-bs-slide="prev">
                                         <span class="carousel-control-prev-icon"></span>
@@ -332,49 +274,7 @@ Driven by passion, skill, and a desire to elevate every bite, TEA-Napay is your 
                                 <h4 class="mb-3 text-center" style="color:var(--primary-color);">Cakes</h4>
                                 <div id="cakesCarousel" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner text-center">
-                                        <!-- Cakes Category Carousel Items -->
-                                        <div class="carousel-item active">
-                                          <a href="menu.html#cakes">
-                                            <img src="./img/chocolatemoist.png" alt="Chocolate Moist Cake" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Chocolate Moist Cake</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#cakes">
-                                            <img src="./img/yemacake.png" alt="Yema Cake" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Yema Cake</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#cakes">
-                                            <img src="./img/custardcake.png" alt="Custard Cake" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Custard Cake</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#cakes">
-                                            <img src="./img/chiffoncake.png" alt="Chiffon Cake" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Chiffon Cake</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#cakes">
-                                            <img src="./img/sansrival.png" alt="Sansrival Cake" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Sansrival Cake</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#cakes">
-                                            <img src="./img/mangocake.png" alt="Mango Cake" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Mango Cake</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#cakes">
-                                            <img src="./img/mochacake.png" alt="Mocha Cake" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Mocha Cake</div>
-                                        </div>
+                                      <?php carouselItems('Cakes', 'cakesCarousel'); ?>
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#cakesCarousel" data-bs-slide="prev">
                                         <span class="carousel-control-prev-icon"></span>
@@ -386,68 +286,57 @@ Driven by passion, skill, and a desire to elevate every bite, TEA-Napay is your 
                             </div>
                         </div>
                     </div>
-                    <!-- Drinks Category -->
+                    <!-- Fruit Tea Category -->
                     <div class="col-12 col-lg-6 mx-auto">
                         <div class="card shadow-lg border-0 mb-4">
                             <div class="card-body py-4">
-                                <h4 class="mb-3 text-center" style="color:var(--primary-color);">Drinks</h4>
-                                <div id="drinksCarousel" class="carousel slide" data-bs-ride="carousel">
+                                <h4 class="mb-3 text-center" style="color:var(--primary-color);">Fruit Tea</h4>
+                                <div id="fruitteaCarousel" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner text-center">
-                                        <!-- Drinks Category Carousel Items -->
-                                        <div class="carousel-item active">
-                                          <a href="menu.html#fruittea">
-                                            <img src="./img/bluesoda.png" alt="Blueberry Soda" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Blueberry Soda</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#fruittea">
-                                            <img src="./img/strawberrysoda.png" alt="Strawberry Soda" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Strawberry Soda</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#fruittea">
-                                            <img src="./img/greenapplesoda.png" alt="Green Apple Soda" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Green Apple Soda</div>
-                                        </div>
+                                      <?php carouselItems('Fruit Tea', 'fruitteaCarousel'); ?>
                                     </div>
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#drinksCarousel" data-bs-slide="prev">
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#fruitteaCarousel" data-bs-slide="prev">
                                         <span class="carousel-control-prev-icon"></span>
                                     </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#drinksCarousel" data-bs-slide="next">
+                                    <button class="carousel-control-next" type="button" data-bs-target="#fruitteaCarousel" data-bs-slide="next">
                                         <span class="carousel-control-next-icon"></span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Others Category -->
+                    <!-- Bites Category -->
                     <div class="col-12 col-lg-6 mx-auto">
                         <div class="card shadow-lg border-0 mb-4">
                             <div class="card-body py-4">
-                                <h4 class="mb-3 text-center" style="color:var(--primary-color);">Others</h4>
-                                <div id="othersCarousel" class="carousel slide" data-bs-ride="carousel">
+                                <h4 class="mb-3 text-center" style="color:var(--primary-color);">Bites</h4>
+                                <div id="bitesCarousel" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner text-center">
-                                        <!-- Others Category Carousel Items -->
-                                        <div class="carousel-item active">
-                                          <a href="menu.html#others">
-                                            <img src="./img/brownies.png" alt="Brownies" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Brownies</div>
-                                        </div>
-                                        <div class="carousel-item">
-                                          <a href="menu.html#others">
-                                            <img src="./img/butterscotch.png" alt="Butterscotch" class="gallery-thumb">
-                                          </a>
-                                          <div class="mt-2">Butterscotch</div>
-                                        </div>
+                                      <?php carouselItems('Bites', 'bitesCarousel'); ?>
                                     </div>
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#othersCarousel" data-bs-slide="prev">
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#bitesCarousel" data-bs-slide="prev">
                                         <span class="carousel-control-prev-icon"></span>
                                     </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#othersCarousel" data-bs-slide="next">
+                                    <button class="carousel-control-next" type="button" data-bs-target="#bitesCarousel" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Milk Tea Category -->
+                    <div class="col-12 col-lg-6 mx-auto">
+                        <div class="card shadow-lg border-0 mb-4">
+                            <div class="card-body py-4">
+                                <h4 class="mb-3 text-center" style="color:var(--primary-color);">Milk Tea</h4>
+                                <div id="milkteaCarousel" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner text-center">
+                                      <?php carouselItems('Milk Tea', 'milkteaCarousel'); ?>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#milkteaCarousel" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon"></span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#milkteaCarousel" data-bs-slide="next">
                                         <span class="carousel-control-next-icon"></span>
                                     </button>
                                 </div>
